@@ -27,7 +27,7 @@ elseif (isset($_POST['genre']) && !empty($_POST['genre']))
 /* Affichage des images sélectionnées*/
 
 echo '<div class="row text-center">';
-
+$num = 0;
 while ($movie = $req->fetch()) 
     {
     echo '<div class="col-lg-3 col-md-6 mb-4">
@@ -41,7 +41,7 @@ while ($movie = $req->fetch())
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal fade" id="movieModal'.$num.'" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body container">
@@ -54,6 +54,7 @@ while ($movie = $req->fetch())
                 </div>
             </div>
         </div>';
+        $num ++;
     }
 echo '</div>'; 
 $req->closeCursor(); 
