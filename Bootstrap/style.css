@@ -1,0 +1,100 @@
+.inline 
+{
+    display : inline;
+}
+body 
+{
+    font-family : 'Montserrat', sans-serif;
+}
+.left 
+{
+    margin-left: 10.5%;
+}
+
+.modal-content
+{
+    background-color : #C4C4C4;
+    color : white;
+}
+.nav2 
+{
+    margin-top : 56px;
+}
+.contenu 
+{
+    position : relative;
+    top : 60px;
+}
+.navend 
+{
+    position : absolute;
+}
+.navbar-1
+{
+    background-color : #5A7756;
+}
+.navbar-2
+{
+    background-color : black;
+}
+.searchBar 
+{
+    opacity : 0;
+    transition : all 0.2s ease-in-out;
+}
+
+.animation 
+{
+    opacity : 1;
+}
+
+.btn-film 
+{ 
+    color: #ffffff; 
+    background-color: #FF6F6F; 
+    border-color: #FF6F6F; 
+}        
+
+.btn-film:hover, 
+.btn-film:focus, 
+.btn-film:active, 
+.btn-film.active, 
+.open .dropdown-toggle.btn-film 
+{ 
+    color: #ffffff; 
+    background-color: #FF6F6F; 
+    border-color: #FF6F6F; 
+} 
+
+.btn-film:active, 
+.btn-film.active, 
+.open .dropdown-toggle.btn-film 
+{ 
+    background-image: none; 
+} 
+
+.btn-film.disabled, 
+.btn-film[disabled], 
+fieldset[disabled] .btn-film, 
+.btn-film.disabled:hover, 
+.btn-film[disabled]:hover, 
+fieldset[disabled] .btn-film:hover, 
+.btn-film.disabled:focus, 
+.btn-film[disabled]:focus, 
+fieldset[disabled] .btn-film:focus, 
+.btn-film.disabled:active, 
+.btn-film[disabled]:active, 
+fieldset[disabled] .btn-film:active, 
+.btn-film.disabled.active, 
+.btn-film[disabled].active, 
+fieldset[disabled] .btn-film.active 
+{ 
+    background-color: #FF6F6F; 
+    border-color: #FF6F6F; 
+} 
+
+.btn-film .badge 
+{ 
+    color: #FF6F6F; 
+    background-color: #ffffff; 
+}
