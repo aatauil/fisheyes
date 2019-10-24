@@ -14,13 +14,14 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
+    CURLOPT_TIMEOUT => 100,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_POSTFIELDS => "{}",
     ));
 
-    $response = json_decode(curl_exec($curl));
+    $response = json_decode(curl_exec($curl),true);
+    $movieInfo = $response['results'];
     $err = curl_error($curl);
 
 
@@ -30,9 +31,18 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
     if ($err) {
     echo "cURL Error #:" . $err;
     } else {
-            echo '<pre>';
-            print_r($response);
-            echo '</pre>';
+        $i = 0;
+        foreach($movieInfo[$i] as $info ){
+
+            echo '<h2>';
+            print_r($movieInfo[$i]['title']);
+            echo '</h2>';
+            echo '<p>';
+            print_r($movieInfo[$i]['overview']);
+            echo '</p>';
+            $i += 1;
+        }
+
         
             
     }
