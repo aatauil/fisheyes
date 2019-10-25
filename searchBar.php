@@ -48,6 +48,7 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
             print_r($movieInfo[$i]['title']);
             echo '</h2>';
             echo '<p>';
+            echo 'rating: ';
             print_r($movieInfo[$i]['vote_average']);
             echo '</p>';
             $i += 1;
