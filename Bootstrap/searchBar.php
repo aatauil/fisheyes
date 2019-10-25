@@ -2,7 +2,7 @@
 $API_key = "4af2589deef3c4d1a028374023d93f3e";
 
     // Search bar get data
-    $searchInput =  $_GET["searchInput"];
+    $searchInput =  $_POST["searchInput"];
     $queryString = '&query='.$searchInput;
 
     //different API CALLs
@@ -34,7 +34,7 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
     echo "cURL Error #:" . $err;
     } else {
         $i = 0;
-        $imgSize = "/w200";
+        $imgSize = "/w300";
         $poster = 'poster_path';
 
         foreach($movieInfo[$i] as $info){

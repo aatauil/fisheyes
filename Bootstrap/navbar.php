@@ -6,7 +6,7 @@
         <a class="navbar-brand text-white" href="#">FishEyes</a>
         <div class="d-flex">
             <form method="post" id="searchBar" class="searchBar">
-                <input type="text" class="form-control" name="titel">
+                <input type="text" class="form-control" name="searchInput">
             </form>
             <button class="btn text-white shadow-none"><i class="fas fa-search text-white" id="search"></i></button>
             <button class="btn text-white shadow-none" data-toggle="modal" data-target="#Modal">Log In</button>
