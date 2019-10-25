@@ -4,6 +4,7 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
     // Search bar get data
     $searchInput =  $_POST["searchInput"];
     $queryString = '&query='.$searchInput;
+    $pageNumber = '1';
 
     //different API CALLs
     $movieDetails = '/search/movie';
@@ -14,7 +15,7 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://api.themoviedb.org/3$movieDetails?api_key=$API_key&language=en-US$queryString&page=1&include_adult=false",
+    CURLOPT_URL => "https://api.themoviedb.org/3$movieDetails?api_key=$API_key&language=en-US$queryString&page=$pageNumber&include_adult=false",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -38,9 +39,8 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
         $poster = 'poster_path';
 
         foreach($movieInfo[$i] as $info){
-
             $PosterPath = $movieInfo[$i][$poster];
-
+        // PUT CARD ON SCREEN WITH EACH MOVIE
             echo 
             '<div class="col-lg-3 col-md-6 mb-4">
                 <div class="card border-dark movie">
@@ -63,7 +63,7 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
                 </div>
             </div>';
         $i += 1;
-        }
+        } 
 
         
             
