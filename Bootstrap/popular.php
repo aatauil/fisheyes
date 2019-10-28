@@ -22,7 +22,7 @@ CURLOPT_CUSTOMREQUEST => "GET",
 CURLOPT_POSTFIELDS => "{}",
 ));
 
-$response = json_decode(curl_exec($curl),true);
+$response = json_decode(curl_exec($curl),true); 
 $movieInfo = $response['results'];
 $err = curl_error($curl);
 
@@ -34,6 +34,7 @@ echo "cURL Error #:" . $err;
     $i = 0;
     $imgSize = "/w300";
     $poster = 'poster_path';
+    $overview = 'overview';
 
     foreach($movieInfo[$i] as $info){
         $PosterPath = $movieInfo[$i][$poster];
@@ -53,7 +54,14 @@ echo "cURL Error #:" . $err;
                 <div class="modal-content">
                     <div class="modal-body container">
                         <div class="row">
-                            <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
+                            <div class="col">
+                                <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
+                            </div>
+                            <div class="col">
+                                 <h2>'.$movieInfo[$i]['title'].'</h2>
+                                 <p> '.$movieInfo[$i]['overview'].'</p>
+                                 <p>'.$movieInfo[$i]['vote_average'].'/10</p>
+                            </div>
                         </div>
                     </div>
                 </div>
