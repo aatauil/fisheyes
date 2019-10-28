@@ -80,7 +80,7 @@ if ($err) {
                     <div class="card movie">
                         <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
                         <div class="card-footer text-white text-left">
-                            <p><strong>'.$movieInfo[$i]['title'].'</strong></p>
+                            <p>'.$movieInfo[$i]['title'].'</p>
                             <p>'.$movieInfo[$i]['vote_average'].'/10</p>
                         </div>
                     </div>
