@@ -2,7 +2,7 @@
 $API_key = "4af2589deef3c4d1a028374023d93f3e";
 
     // Search bar get data
-    $searchInput =  $_GET["searchInput"];
+    $searchInput =  $_POST["searchInput"];
     $queryString = '&query='.$searchInput;
 
     //different API CALLs
