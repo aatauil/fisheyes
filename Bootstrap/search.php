@@ -79,7 +79,7 @@ if ($err) {
                 '<div class="col-lg-3 col-md-6 mb-4 d-flex flex-fill">
                     <div class="card movie">
                     '.$image.'
-                        <div class="card-footer d-flex flex-column flex-fill text-white text-left">
+                        <div class="card-footer d-flex flex-column flex-fill justify-content-end text-white text-left">
                             <p><strong>'.$movieInfo[$i]['title'].'</strong></p>
                             <p>'.$movieInfo[$i]['vote_average'].'/10</p>
                         </div>
