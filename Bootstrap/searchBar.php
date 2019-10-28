@@ -2,9 +2,8 @@
 $API_key = "4af2589deef3c4d1a028374023d93f3e";
 
     // Search bar get data
-    $searchInput =  $_POST["searchInput"];
+    $searchInput =  $_GET["searchInput"];
     $queryString = '&query='.$searchInput;
-    $pageNumber = '1';
 
     //different API CALLs
     $movieDetails = '/search/movie';
@@ -15,7 +14,7 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://api.themoviedb.org/3$movieDetails?api_key=$API_key&language=en-US$queryString&page=$pageNumber&include_adult=false",
+    CURLOPT_URL => "https://api.themoviedb.org/3$movieDetails?api_key=$API_key&language=en-US$queryString&page=1&include_adult=false",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -39,12 +38,21 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
         $poster = 'poster_path';
 
         foreach($movieInfo[$i] as $info){
+
             $PosterPath = $movieInfo[$i][$poster];
-        // PUT CARD ON SCREEN WITH EACH MOVIE
+
+            if ($movieInfo[$i]['backdrop_path'] == "") {
+                $image = "<p>Image non disponible</p>";
+            } else {
+                $image = '<img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">';
+            }
+
             echo 
-            '<div class="col-lg-3 col-md-6 mb-4">
+            '<div class="col-lg-2 col-md-6 mb-4">
                 <div class="card border-dark movie">
-                    <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
+                    <div style="height : 18rem;" class="d-flex align-items-center justify-content-center">
+                        '.$image.'
+                    </div>
                     <div class="card-footer bg-secondary text-white text-left">
                         <p>'.$movieInfo[$i]['title'].'</p>
                         <p>'.$movieInfo[$i]['vote_average'].'/10</p>
@@ -52,18 +60,23 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
                 </div>
             </div>
             <div class="modal fade" id="movieModal'.$i.'" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                    <div class="modal-content">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-xl" role="document">
+                    <div class="film">
                         <div class="modal-body container">
                             <div class="row">
-                                <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
+                                <div class="col-6">
+                                    '.$image.'
+                                </div>
+                                <div class="col-6 pr-5 pt-5">
+                                    <p class="text-justify">'.$movieInfo[$i]['overview'].'</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>';
         $i += 1;
-        } 
+        }
 
         
             
