@@ -19,17 +19,7 @@
 <div class="container-fluid">
         <div class="row text-center">
         <!-- Searchbar Capabilities -->
-             <?php include("popular.php");?>
-        </div>
-    </div>
-
-
-    
-
-    <div class="container-fluid">
-        <div class="row text-center">
-        <!-- Searchbar Capabilities -->
-            <?php include("searchBar.php"); ?>
+             <?php include("search.php");?>
         </div>
     </div>
 
