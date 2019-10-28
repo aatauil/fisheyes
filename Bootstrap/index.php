@@ -9,9 +9,18 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 
-    <title>Fish Eyes</title>
+    <title>Fish Eyes</title><script src="three.r92.min.js"></script>
+<script src="vanta.net.min.js"></script>
+<script>
+VANTA.NET({
+  el: "#your-element-selector",
+  color: 0xdff29,
+  backgroundColor: 0x0,
+  points: 15.00
+})
+</script>
 </head>
-<body class="bg-dark">
+<body>
 <!-- navbar HTML -->
 
 <?php include("navbar.php"); ?>
@@ -36,6 +45,18 @@ for (let i=0; i<movie.length; i++) {
 }
 $('#search').on('click', function(e) {
     $('#searchBar').toggleClass('animation');
+})
+
+</script>
+
+<script src="three.r92.min.js"></script>
+<script src="vanta.net.min.js"></script>
+<script>
+VANTA.NET({
+  el: "#your-element-selector",
+  color: 0xdff29,
+  backgroundColor: 0x0,
+  points: 15.00
 })
 </script>
 </body>

@@ -77,9 +77,9 @@ if ($err) {
             // PUT CARD ON SCREEN WITH EACH MOVIE
                 echo 
                 '<div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card border-dark movie">
+                    <div class="card movie">
                         <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
-                        <div class="card-footer bg-secondary text-white text-left">
+                        <div class="card-footer text-white text-left">
                             <p>'.$movieInfo[$i]['title'].'</p>
                             <p>'.$movieInfo[$i]['vote_average'].'/10</p>
                         </div>

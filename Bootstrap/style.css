@@ -4,6 +4,7 @@
 
 body {
     font-family : 'Montserrat', sans-serif;
+    background-color: rgba(0, 0, 0, 0.952);
 }
 
 .left {
@@ -14,6 +15,8 @@ body {
     filter: blur(5px);
 
 }
+
+
 
 .blur-content{
     width: 100vw;
@@ -33,12 +36,16 @@ body {
 }
 
 .modal-content{
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(0, 0, 0, 0);
     color : white;
 }
 
 .nav2 {
     margin-top : 56px;
+}
+
+.navbar{
+    background-color: rgba(0, 0, 0, 0.589);
 }
 
 .contenu {
@@ -51,7 +58,7 @@ body {
 }
 
 .navbar-1{
-    background-color : #5A7756;
+    background-color :#B32323;
 }
 
 .navbar-2{
@@ -63,13 +70,25 @@ body {
     transition : all 0.2s ease-in-out;
 }
 
+.card-footer{
+    background-color: #521936;
+}
+
+.card{
+    border: none;
+}
+
 .animation {
     opacity : 1;
 }
 
+p{
+    white-space: nowrap;
+}
+
 .btn-film { 
     color: #ffffff; 
-    background-color: #FF6F6F; 
+    background-color: rgb(192, 13, 228); 
     border-color: #FF6F6F; 
 }        
 
