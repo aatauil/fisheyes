@@ -86,17 +86,25 @@ if ($err) {
                     </div>
                 </div>
                 <div class="modal fade" id="movieModal'.$i.'" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-body container">
                                 <div class="row">
                                     <div class="col">
                                         <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
                                     </div>
-                                    <div class="col">
-                                        <h2>'.$movieInfo[$i]['title'].'</h2>
-                                        <p> '.$movieInfo[$i]['overview'].'</p>
-                                        <p>'.$movieInfo[$i]['vote_average'].'/10</p>
+                                    <div class="col d-flex flex-column justify-content-between">
+                                        <div>
+                                            <h2>'.$movieInfo[$i]['title'].'</h2>
+                                            <p> '.$movieInfo[$i]['overview'].'</p>
+                                            <p>'.$movieInfo[$i]['vote_average'].'/10</p>
+                                        </div>
+                                        <div>
+                                            <form class="form-inline row ">
+                                                <input class="form-control col-8" type="text" name="commentaire">
+                                                <button class="btn btn-film ml-3 mr-3"type="submit" name="envoyer">Envoyer</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
