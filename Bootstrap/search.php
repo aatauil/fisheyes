@@ -1,6 +1,6 @@
 <?php 
 $API_key = "4af2589deef3c4d1a028374023d93f3e";
-if (!empty($_POST['searchInput'])) {
+if (isset($_POST['searchInput'])) {
     // Search bar get data
     $searchInput =  $_POST["searchInput"];
     $queryString = '&query='.$searchInput;
@@ -69,14 +69,14 @@ if ($err) {
 
                 // insert message "image non disponible" when image not found
                 if ($movieInfo[$i]['backdrop_path'] == "") {
-                    $image = '<div style="width:300px;height:80%;" class="d-flex flex-column justify-content-center"><p>Image non disponible</p></div>';
+                    $image = "<p>Image non disponible</p>";
                 } else {
                     $image = '<img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">';
                 }
 
             // PUT CARD ON SCREEN WITH EACH MOVIE
                 echo 
-                '<div class="col-lg-3 col-md-6 mb-4 d-flex flex-fill">
+                '<div class="col-lg-2 col-md-6 mb-4">
                     <div class="card movie">
                         <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
                         <div class="card-footer text-white text-left">
@@ -91,7 +91,7 @@ if ($err) {
                             <div class="modal-body container">
                                 <div class="row">
                                     <div class="col">
-                                        '.$image.'
+                                        <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
                                     </div>
                                     <div class="col d-flex flex-column justify-content-between">
                                         <div>
