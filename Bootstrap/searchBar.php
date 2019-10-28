@@ -49,11 +49,11 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
 
             echo 
             '<div class="col-lg-2 col-md-6 mb-4">
-                <div class="card border-dark movie">
+                <div class="card movie">
                     <div style="height : 18rem;" class="d-flex align-items-center justify-content-center">
                         '.$image.'
                     </div>
-                    <div class="card-footer bg-secondary text-white text-left">
+                    <div class="card-footer text-white text-left">
                         <p>'.$movieInfo[$i]['title'].'</p>
                         <p>'.$movieInfo[$i]['vote_average'].'/10</p>
                     </div>
