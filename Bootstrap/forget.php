@@ -26,6 +26,7 @@ if (isset($_POST['forget'])) {
             $req->closeCursor();
 
             // send new password to user 
+            // for now it works only on my local server, modifications needed)
 
             /*$to_email = $resultat[1];
             $subject = 'Password change succeeded';
@@ -34,7 +35,7 @@ if (isset($_POST['forget'])) {
             mail($to_email,$subject,$message,$headers);*/
 
             header('location: index.php?passwordchangedPassword='.$newPassword);      
-                  
+
         } else {
             header('location: index.php?useroremailnotfound');
         }
