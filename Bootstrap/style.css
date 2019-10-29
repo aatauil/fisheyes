@@ -78,6 +78,7 @@ body {
 .card-footer{
     background-color: rgba(0, 0, 0, 0);
     padding: 10px 3px !important;
+
 }
 
 .card{
@@ -90,7 +91,9 @@ body {
 }
 
 p{
+    text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 .btn-film { 
