@@ -21,7 +21,7 @@
         <div class="d-flex">
             <!-- category -->
             <form method="post"><button type="submit" name="genre" value="Comédie" class="btn text-white shadow-none pl-0">Comédie</button></form>
-            <form method="post" action = "movie-Genres/Horreur.php"><button type="submit" name="genre" value="Horreur" class="btn text-white shadow-none">Horreur</button></form>
+            <form method="post"><button type="submit" name="genre" value="Horreur" class="btn text-white shadow-none">Horreur</button></form>
             <form method="post"><button type="submit" name="genre" value="Thriller" class="btn text-white shadow-none">Thriller</button></form>
             <form method="post"><button type="submit" name="genre" value="Guerre" class="btn text-white shadow-none">Guerre</button></form>
             <form method="post"><button type="submit" name="genre" value="SF" class="btn text-white shadow-none">SF</button></form>
