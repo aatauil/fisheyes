@@ -16,12 +16,12 @@
 <body>
 <!-- navbar HTML -->
 
-<?php include("navbar.php"); ?>
+<?php include("header/navbar.php"); ?>
 
 <div class="container-fluid">
         <div class="row text-center">
         <!-- Searchbar Capabilities -->
-             <?php include("search.php");?>
+             <?php include("header/search.php");?>
         </div>
     </div>
 
@@ -40,17 +40,6 @@ $('#search').on('click', function(e) {
     $('#searchBar').toggleClass('animation');
 })
 
-</script>
-
-<script src="three.r92.min.js"></script>
-<script src="vanta.net.min.js"></script>
-<script>
-VANTA.NET({
-  el: "#your-element-selector",
-  color: 0xdff29,
-  backgroundColor: 0x0,
-  points: 15.00
-})
 </script>
 </body>
 </html>

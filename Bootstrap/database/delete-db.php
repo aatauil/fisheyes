@@ -1,5 +1,5 @@
 <?php
-    require 'database.php';
+    require 'database/database.php';
     $id = 0;
      
     if ( !empty($_GET['id'])) {
@@ -17,7 +17,7 @@
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         Database::disconnect();
-        header("Location: index-db.php");
+        header("Location: database/index-db.php");
          
     }
 ?>
@@ -46,7 +46,7 @@
                       <p class="alert alert-error">Are you sure to delete ?</p>
                       <div class="form-actions">
                           <button type="submit" class="btn btn-danger">Yes</button>
-                          <a class="btn btn-secondary" href="index-db.php">No</a>
+                          <a class="btn btn-secondary" href="database/index-db.php">No</a>
                         </div>
                     </form>
                 </div>

@@ -1,6 +1,6 @@
 <?php 
 
-require 'database.php';
+require 'database/database.php';
 
 if ( !empty($_POST)) {
 // Saisie des erreurs de validation
@@ -43,7 +43,7 @@ if ($valid) {
      $q = $pdo->prepare($sql);
      $q->execute(array($username,$email,$passwordHash));
      Database::disconnect();
-     header("Location: index-db.php");
+     header("Location: database/index-db.php");
 }
       }
 ?>
@@ -95,7 +95,7 @@ if ($valid) {
             </div>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Create</button>
-                <a class="btn btn-secondary" href="index-db.php">Back</a>
+                <a class="btn btn-secondary" href="database/index-db.php">Back</a>
             </div>
         </form>
     </div>

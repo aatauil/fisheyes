@@ -1,5 +1,5 @@
 <?php
-    require 'database.php';
+    require 'database/database.php';
  
     $id = null;
     if ( !empty($_GET['id'])) {
@@ -7,7 +7,7 @@
     }
      
     if ( null==$id ) {
-        header("Location: index-db.php");
+        header("Location: database/index-db.php");
     }
      
     if ( !empty($_POST)) {
@@ -84,7 +84,7 @@
                         <h3>Update a Customer</h3>
                     </div>
              
-                    <form class="form-horizontal" action="update-db.php?id=<?php echo $id?>" method="post">
+                    <form class="form-horizontal" action="database/update-db.php?id=<?php echo $id?>" method="post">
                       <div class="control-group <?php echo !empty($usernameError)?'error':'';?>">
                         <label class="control-label">Username</label>
                         <div class="controls">
@@ -114,7 +114,7 @@
                       </div>
                       <div class="form-actions">
                           <button type="submit" class="btn btn-success">Update</button>
-                          <a class="btn btn-secondary" href="index-db.php">Back</a>
+                          <a class="btn btn-secondary" href="database/index-db.php">Back</a>
                         </div>
                     </form>
                 </div>

@@ -1,12 +1,12 @@
 <?php
-    require 'database.php';
+    require 'database/database.php';
     $id = null;
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
     }
      
     if ( null==$id ) {
-        header("Location: index-db.php");
+        header("Location: database/index-db.php");
     } else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="form-actions">
-            <a class="btn btn-secondary" href="index-db.php">Back</a>
+            <a class="btn btn-secondary" href="database/index-db.php">Back</a>
         </div>
         </div>
     </div>
