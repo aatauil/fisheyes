@@ -1,4 +1,5 @@
 <?php 
+session_start();
 if (isset($_POST['login']) || isset($_POST['logout'])) {
     if ((isset($_POST['login']))) {
         try {
@@ -19,9 +20,8 @@ if (isset($_POST['login']) || isset($_POST['logout'])) {
             $infos = $req->fetch();
             if (password_verify($password, $infos[0])) {
                 $req->closeCursor(); 
-                session_start();
                 $_SESSION['user'] = $infos[1];
-                header('location: index.php?success' . $_SESSION['user']);
+                header('location: index.php?success');
 
             } else {
                 $req->closeCursor(); 
@@ -33,8 +33,8 @@ if (isset($_POST['login']) || isset($_POST['logout'])) {
         }
 
     } else {
-        session_destroy();
-        header('location: index.php?logoutsuccess' . $_SESSION['user']);
+        $_SESSION['user'] = '';
+        header('location: index.php?logoutsuccess');
     } 
 
 } 

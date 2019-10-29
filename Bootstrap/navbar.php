@@ -1,3 +1,12 @@
+<?php 
+session_start();
+if (!empty($_SESSION['user'])) {
+    $display = $_SESSION['user'];
+} else {
+    $display = 'LOG IN';
+}
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light navbar-1">
     <button class="navbar-toggler" data-toggle="collapse" data-target=".navbars">
         <span class="navbar-toggler-icon"></span>
@@ -12,7 +21,7 @@
             </form>
             <button class="btn text-white shadow-none"><i class="fas fa-search text-white" id="search"></i></button>
             <!-- login button -->
-            <button class="btn text-white shadow-none" data-toggle="modal" data-target="#Modal">Log In</button>
+            <button class="btn text-white shadow-none" data-toggle="modal" data-target="#Modal"><?=$display?></button>
         </div>
     </div>
 </nav>
