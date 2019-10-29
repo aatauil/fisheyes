@@ -1,5 +1,14 @@
 <?php 
+session_start();
 $API_key = "4af2589deef3c4d1a028374023d93f3e";
+if(isset($_SESSION['user'])) {
+    $message = '<form class="form-inline row ">
+                <input class="form-control col-8" type="text" name="commentaire">
+                <button class="btn btn-film ml-3 mr-3"type="submit" name="envoyer">Envoyer</button>
+                </form>';
+     } else {
+         $message = 'ERROR';
+     }
 if (!empty($_POST['searchInput'])) {
     // Search bar get data
     $searchInput =  $_POST["searchInput"];
@@ -99,12 +108,9 @@ if ($err) {
                                             <p> '.$movieInfo[$i]['overview'].'</p>
                                             <p>'.$movieInfo[$i]['vote_average'].'/10</p>
                                         </div>
-                                        <div>
-                                            <form class="form-inline row ">
-                                                <input class="form-control col-8" type="text" name="commentaire">
-                                                <button class="btn btn-film ml-3 mr-3"type="submit" name="envoyer">Envoyer</button>
-                                            </form>
-                                        </div>
+                                        <div>'
+                                            .$message.
+                                        '</div>
                                     </div>
                                 </div>
                             </div>
