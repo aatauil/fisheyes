@@ -10,19 +10,12 @@ if (isset($_POST['forget'])) {
 
         // check if the user/email exists
 
-        $req = $bdd->prepare('SELECT COUNT(*) FROM users WHERE email = :email OR username = :username');
+        $req = $bdd->prepare('SELECT COUNT(*), email FROM users WHERE email = :email OR username = :username GROUP BY email');
         $req->execute(array('email' => $usermail,'username' => $usermail));
-        $nombre = $req->fetch();
+        $resultat = $req->fetch();
         $req->closeCursor(); 
 
-        if ($nombre[0] != 0) {
-
-            // get user's email
-
-            $req = $bdd->prepare('SELECT email FROM users WHERE email = :email OR username = :username');
-            $req->execute(array('email' => $usermail,'username' => $usermail));
-            $email = $req->fetch();
-            $req->closeCursor(); 
+        if ($$resultat[0] != 0) {
 
             // generate new password
 
@@ -34,13 +27,14 @@ if (isset($_POST['forget'])) {
 
             // send new password to user 
 
-            $to_email = $email[0];
+            /*$to_email = $resultat[1];
             $subject = 'Password change succeeded';
             $message = 'Hello, this is your new password : ' . $newPassword;
             $headers = 'From: shaoyuan.weng@gmail.com';
-            mail($to_email,$subject,$message,$headers);
+            mail($to_email,$subject,$message,$headers);*/
 
-            header('location: index.php?passwordchangedPassword='.$newPassword);            
+            header('location: index.php?passwordchangedPassword='.$newPassword);      
+                  
         } else {
             header('location: index.php?useroremailnotfound');
         }
