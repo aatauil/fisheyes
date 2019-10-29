@@ -15,8 +15,8 @@ if (isset($_POST['login']) || isset($_POST['logout'])) {
         $req->execute(array('email' => $usermail,'username' => $usermail));
         $nombre = $req->fetch();
         if ($nombre[0] != 0) {
-            $req = $bdd->prepare('SELECT password, username FROM users WHERE username = :username');
-            $req->execute(array('username' => $usermail,));
+            $req = $bdd->prepare('SELECT password, username FROM users WHERE username = :username OR email = :email');
+            $req->execute(array('email' => $usermail,'username' => $usermail));
             $infos = $req->fetch();
             if (password_verify($password, $infos[0])) {
                 $req->closeCursor(); 
