@@ -5,6 +5,21 @@ if (!empty($_SESSION['user'])) {
 } else {
     $display = 'LOG IN';
 }
+if (isset($_GET['success'])) {
+    $status = 'Login success';
+} else if (isset($_GET['useroremailnotfound'])) {
+    $status = 'User or mail not found';
+} else if (isset($_GET['userpassworddoesnotmatch'])) {
+    $status = "The password does not match";
+} else if (isset($_GET['logoutsuccess'])) {
+    $status = "You have logged out successfully";
+} else if (isset($_GET['passwordchanged'])) {
+    $status = "Password changed successfully, your new password is".$_GET['password'];
+} else if (isset($_GET['userexistalready'])) {
+    $status = "The user name already existed";
+} else if (isset($_GET['createsuccess'])) {
+    $status = "You have created a account";
+}
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light navbar-1">
@@ -14,6 +29,7 @@ if (!empty($_SESSION['user'])) {
     <div class="collapse navbar-collapse navbars justify-content-between" id="collapse_target1">
         <!-- logo -->
         <a class="navbar-brand text-white" href="#">FishEyes</a>
+        <p><?=$status?></p>
         <div class="d-flex">
             <!-- searchBar -->
             <form method="post" id="searchBar" class="searchBar">

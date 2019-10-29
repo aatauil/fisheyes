@@ -18,7 +18,7 @@ if (isset($_POST['create'])) {
     $donnee = $req->fetch();
     if ($donnee[0] != 0) {
         $req->closeCursor(); 
-        header('location: index.php?error=userexistalready');
+        header('location: index.php?userexistalready');
         exit();
     } else {
         $req = $bdd->prepare('INSERT INTO users(username, email, password) VALUES(:username, :email, :password)');
@@ -28,7 +28,7 @@ if (isset($_POST['create'])) {
             'password' => $password
         ));
         $req->closeCursor(); 
-        header('location: index.php?success');
+        header('location: index.php?createsuccess');
     }
 } else {
     header('location: index.php');
