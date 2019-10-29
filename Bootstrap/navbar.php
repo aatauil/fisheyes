@@ -36,7 +36,7 @@ if (!empty($_SESSION['user'])) {
             <form method="post"><button type="submit" name="genre" value="SF" class="btn text-white shadow-none">SF</button></form>
         </div>
         <div class="d-flex">
-            <button class="btn text-white shadow-none">Settings</button>
+            <button class="btn text-white shadow-none" data-toggle="modal" data-target="#Modal2">Settings</button>
             <!-- logout button -->
             <form action="login.php" method="post"><button class="btn text-white shadow-none" type="submit" name="logout">Logout</button></form>
         </div>
@@ -95,3 +95,50 @@ if (!empty($_SESSION['user'])) {
         </div>
     </div>
 </div>
+
+<!-- settings modal -->
+<div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body container">
+                <div class="row">
+                    <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+                        <!-- change password -->
+                        <h3 class="text-center mb-4">Change password</h3>
+                        <form method="post" action="update.php" class="d-flex flex-column" oninput='newpassword2.setCustomValidity(newpassword2.value != newpassword.value ? "Passwords do not match." : "")'>
+                            <div class="form-group">
+                                <label for="">Email or Username</label>
+                                <input type="text" name="usermail" class="form-control" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Password</label>
+                                <input type="password" name="password" class="form-control" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">New password</label>
+                                <input type="password" name="newpassword" class="form-control" placeholder="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Confirm new password</label>
+                                <input type="password" name="newpassword2" class="form-control" placeholder="" required>
+                            </div>
+                            <button type="submit" name="update" class="btn btn-film mt-3">Send</button>
+                        </form>
+                    </div>
+                    <div class="col-6 d-flex flex-column align-items-center justify-content-center">
+                        <!-- forget password -->
+                        <h3 class="text-center mb-4">Forget password</h3>
+                        <form method="post" action="forget.php" class="d-flex flex-column">
+                            <div class="form-group">
+                                <label for="">Email or Username</label>
+                                <input type="text" name="usermail" class="form-control" placeholder="" required>
+                            </div>
+                            <button type="submit" name="forget" class="btn btn-film mt-3">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
