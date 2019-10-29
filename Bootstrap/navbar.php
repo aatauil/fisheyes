@@ -18,7 +18,7 @@ if (isset($_GET['success'])) {
 } else if (isset($_GET['userexistalready'])) {
     $status = "The user name already existed";
 } else if (isset($_GET['createsuccess'])) {
-    $status = "You have created a account";
+    $status = "You have created an account";
 }
 ?>
 
@@ -29,7 +29,7 @@ if (isset($_GET['success'])) {
     <div class="collapse navbar-collapse navbars justify-content-between" id="collapse_target1">
         <!-- logo -->
         <a class="navbar-brand text-white" href="#">FishEyes</a>
-        <p><?=$status?></p>
+        <p class="text-white"><?=$status?></p>
         <div class="d-flex">
             <!-- searchBar -->
             <form method="post" id="searchBar" class="searchBar">
