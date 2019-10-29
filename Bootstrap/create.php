@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['create'])) {
     try {
-    $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;charset=utf8', 'root', 'root');
+    $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;charset=utf8', 'root', '');
 } 
     catch (Exception $e) {
     die('Erreur : ' .$e->getMessage());
