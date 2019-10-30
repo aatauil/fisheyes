@@ -62,10 +62,10 @@
                                         </div>
                                         <div>'
                                             .$message.//variable pour afficher la barre des commentaires ou non.
-                                        // $req = $bdd -> prepare('INSERT INTO commentaire (id users, id movies, comment, date) Values(? ,? ,? , NOW())');
-                                        //  if(isset($_POST['send'])) {
-                                        //     $req = $bdd -> execute(array());
-                                        // }
+                                            //$req = $bdd -> prepare('INSERT INTO commentaire (id users, id movies, comment, date) Values(? ,? ,? , NOW())');
+                                            //if(isset($_POST['send'])) {
+                                            //    $req = $bdd -> execute(array());
+                                            //}
                                         '</div>
                                     </div>
                                 </div>

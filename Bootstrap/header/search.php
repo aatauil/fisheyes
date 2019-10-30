@@ -1,15 +1,24 @@
 <?php 
 session_start();
 $API_key = "4af2589deef3c4d1a028374023d93f3e";
+
 //condtion pour afficher la barre des commentaires ou non.
 if (!empty($_SESSION['user'])) {
     $message = '<form method="POST" class="form-inline row ">
                 <input class="form-control col-8" type="text" name="commentaire">
                 <button class="btn btn-film ml-3 mr-3"type="submit" name="envoyer">Envoyer</button>
                 </form>';
+    if(isset($_POST['send'])) {
+        $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
+        $commentaire = htmlspecialchars($_POST['commentaire']);
+        $req = $bdd -> prepare('INSERT INTO commentaire (id users, id movies, comment, date) Values(? ,? ,? , NOW())');
+        $req = $bdd -> execute(array($_SESSION['user'], $info['id'], $commentaire ));
+        $req -> closeCursor();
+    }
 } else {
     $message = 'ERROR';
 }
+
 
 // if search input exists
 if (!empty($_POST['searchInput'])) {
@@ -88,10 +97,7 @@ if (!empty($_POST['searchInput'])) {
                                             </div>
                                             <div>'
                                                 .$message. //variable pour afficher la barre des commentaires ou non.
-                                               // $req = $bdd -> prepare('INSERT INTO commentaire (id users, id movies, comment, date) Values(? ,? ,? , NOW())');
-                                              //  if(isset($_POST['send'])) {
-                                               //     $req = $bdd -> execute(array());
-                                               // }
+
     
                                             '</div>
                                         </div>
