@@ -29,7 +29,7 @@
         <div class="d-flex">
             <button class="btn text-white shadow-none">Settings</button>
             <!-- logout button -->
-            <form action="login.php" method="post"><button class="btn text-white shadow-none" type="submit" name="logout">Logout</button></form>
+            <form action="logSys/login.php" method="post"><button class="btn text-white shadow-none" type="submit" name="logout">Logout</button></form>
         </div>
     </div>
 </nav>
@@ -45,7 +45,7 @@
                     <div class="col-6">
                         <!-- register -->
                         <h3 class="text-center mb-4">Register</h3>
-                        <form method="post" action="database/create.php" class="d-flex flex-column ml-3" oninput='password2.setCustomValidity(password2.value != password.value ? "Passwords do not match." : "")'>
+                        <form method="post" action="database/logSys/create.php" class="d-flex flex-column ml-3" oninput='password2.setCustomValidity(password2.value != password.value ? "Passwords do not match." : "")'>
                             <div class="form-group">
                                 <label for="">Username</label>
                                 <input type="text" name="user" class="form-control" placeholder="" required>
@@ -69,7 +69,7 @@
                     <!-- login -->
                     <div class="col-6 d-flex flex-column align-items-center justify-content-center">
                         <h3 class="text-center mb-4">Login</h3>
-                        <form method="post" action="login.php" class="d-flex flex-column">
+                        <form method="post" action="logSys/login.php" class="d-flex flex-column">
                             <div class="form-group">
                                 <label for="">Email or Username</label>
                                 <input type="text" name="usermail" class="form-control" placeholder="" required>

@@ -1,4 +1,5 @@
 <?php
+//nombre page
 $pageNumber = 0;
 // one page = 20 movies , 5 pages = 100movies
 $maxPages = 5;

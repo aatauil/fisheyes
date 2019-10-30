@@ -65,7 +65,7 @@ if ($valid) {
         <div class="row">
             <h3>Create a User</h3>
         </div>
-        <form class="form-horizontal" action="create.php" method="post">
+        <form class="form-horizontal" action="logSys/create.php" method="post">
             <div class="form-group <?php echo !empty($nameError)?'has-error':'';?>">
                 <label class="control-label">Name</label>
                 <div class="controls">
