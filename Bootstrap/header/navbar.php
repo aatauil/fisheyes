@@ -45,7 +45,7 @@
                     <div class="col-6">
                         <!-- register -->
                         <h3 class="text-center mb-4">Register</h3>
-                        <form method="post" action="database/logSys/create.php" class="d-flex flex-column ml-3" oninput='password2.setCustomValidity(password2.value != password.value ? "Passwords do not match." : "")'>
+                        <form method="post" action="logSys/create.php" class="d-flex flex-column ml-3" oninput='password2.setCustomValidity(password2.value != password.value ? "Passwords do not match." : "")'>
                             <div class="form-group">
                                 <label for="">Username</label>
                                 <input type="text" name="user" class="form-control" placeholder="" required>
