@@ -21,23 +21,23 @@ if (isset($_POST['login']) || isset($_POST['logout'])) {
             if (password_verify($password, $infos[0])) {
                 $req->closeCursor(); 
                 $_SESSION['user'] = $infos[1];
-                header('location: index.php?success');
+                header('location: ../index.php?success');
 
             } else {
                 $req->closeCursor(); 
-                header('location: index.php?userpassworddoesnotmatch');
+                header('location: ../index.php?userpassworddoesnotmatch');
             }
         } else {
             $req->closeCursor(); 
-            header('location: index.php?useroremailnotfound');
+            header('location: ../index.php?useroremailnotfound');
         }
 
     } else {
         $_SESSION['user'] = '';
-        header('location: index.php?logoutsuccess');
+        header('location: ../index.php?logoutsuccess');
     } 
 
 } 
 else {
-    header('location: index.php');
+    header('location: ../index.php');
 }

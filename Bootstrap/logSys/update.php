@@ -22,17 +22,17 @@ if (isset($_POST['update'])) {
                 $req = $bdd->prepare('UPDATE users SET password = :password WHERE email = :email OR username = :username');
                 $req->execute(array('email' => $usermail, 'username' => $usermail, 'password' => $newPassword));
                 $req->closeCursor();
-                header('location: index.php?changesuccess');
+                header('location: ../index.php?changesuccess');
 
             } else {
                 $req->closeCursor(); 
-                header('location: index.php?userpassworddoesnotmatch');
+                header('location: ../index.php?userpassworddoesnotmatch');
             }
         } else {
             $req->closeCursor(); 
-            header('location: index.php?useroremailnotfound');
+            header('location: ../index.php?useroremailnotfound');
         }
 } 
 else {
-    header('location: index.php');
+    header('location: ../index.php');
 }

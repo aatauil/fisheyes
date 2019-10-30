@@ -34,12 +34,12 @@ if (isset($_POST['forget'])) {
             $headers = 'From: shaoyuan.weng@gmail.com';
             mail($to_email,$subject,$message,$headers);*/
 
-            header('location: index.php?passwordchangedPassword='.$newPassword);      
+            header('location: ../index.php?passwordchangedPassword='.$newPassword);      
 
         } else {
-            header('location: index.php?useroremailnotfound');
+            header('location: ../index.php?useroremailnotfound');
         }
 } 
 else {
-    header('location: index.php');
+    header('location: ../index.php');
 }
