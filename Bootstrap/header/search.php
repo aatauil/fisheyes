@@ -51,7 +51,7 @@ if (!empty($_POST['searchInput'])) {
                 $send = 'method="POST"';
     
                 foreach($movieInfo[$i] as $info){
-                    $PosterPath = $movieInfo[$i][$poster];
+                    $PosterPath = $info[$poster];
     
                     // insert message "image non disponible" when image not found
                     if ($movieInfo[$i]['backdrop_path'] == "") {
@@ -66,9 +66,9 @@ if (!empty($_POST['searchInput'])) {
                         <div class="card movie">
                             <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
                             <div class="card-footer text-white text-left">
-                                <p>'.$movieInfo[$i]['title'].'</p>
-                                <p>'.$movieInfo[$i]['id'].'</p>
-                                <p>'.$movieInfo[$i]['vote_average'].'/10</p>
+                                <p>'.$info['title'].'</p>
+                                <p>'.$info['id'].'</p>
+                                <p>'.$info['vote_average'].'/10</p>
                             </div>
                         </div>
                     </div>
@@ -82,12 +82,12 @@ if (!empty($_POST['searchInput'])) {
                                         </div>
                                         <div class="col d-flex flex-column justify-content-between">
                                             <div>
-                                                <h2>'.$movieInfo[$i]['title'].'</h2>
-                                                <p> '.$movieInfo[$i]['overview'].'</p>
-                                                <p>'.$movieInfo[$i]['vote_average'].'/10</p>
+                                                <h2>'.$info['title'].'</h2>
+                                                <p> '.$info['overview'].'</p>
+                                                <p>'.$info['vote_average'].'/10</p>
                                             </div>
                                             <div>'
-                                                .$message.//variable pour afficher la barre des commentaires ou non.
+                                                .$message. //variable pour afficher la barre des commentaires ou non.
                                                // $req = $bdd -> prepare('INSERT INTO commentaire (id users, id movies, comment, date) Values(? ,? ,? , NOW())');
                                               //  if(isset($_POST['send'])) {
                                                //     $req = $bdd -> execute(array());
