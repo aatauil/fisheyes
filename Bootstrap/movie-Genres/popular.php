@@ -1,8 +1,9 @@
 <?php
     $pageNumber = 0;
     // one page = 20 movies , 5 pages = 100movies
-    $maxPages = 10;
+    $maxPages = 20;
     //for loop to get more movies shown on same page
+    $comptage = 0;
         for($y = 1; $y < $maxPages ; $y++){
             $API_key = "4af2589deef3c4d1a028374023d93f3e";
             $pageNumber++;
@@ -45,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="movieModal'.$i.'" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal fade" id="movieModal'.$comptage.'" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-body container">
@@ -73,6 +74,7 @@
                     </div>
                 </div>';
             $i += 1;
+            $comptage += 1;
             } 
         }
     }
