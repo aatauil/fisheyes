@@ -12,7 +12,7 @@ if (!empty($_SESSION['user'])) {
     </button>
     <div class="collapse navbar-collapse navbars justify-content-between" id="collapse_target1">
         <!-- logo -->
-        <a class="navbar-brand text-white" href="#">FishEyes</a>
+        <a class="navbar-brand text-white" href="../Bootstrap">FishEyes</a>
         <div class="d-flex">
             <!-- searchBar -->
             <form method="get" id="searchBar" class="searchBar">
@@ -28,7 +28,7 @@ if (!empty($_SESSION['user'])) {
     <div class="collapse navbar-collapse navbars justify-content-between" id="collapse_target2">
         <div class="d-flex">
             <!-- category -->
-            <form method="post"><button type="submit" name="genre" value="Comédie" class="btn text-white shadow-none pl-0">Comédie</button></form>
+            <form method="post"><button type="submit" name="genre" value="Comedy" class="btn text-white shadow-none pl-0">Comédie</button></form>
             <form method="post"><button type="submit" name="genre" value="Horreur" class="btn text-white shadow-none">Horreur</button></form>
             <form method="post"><button type="submit" name="genre" value="Thriller" class="btn text-white shadow-none">Thriller</button></form>
             <form method="post"><button type="submit" name="genre" value="Guerre" class="btn text-white shadow-none">Guerre</button></form>

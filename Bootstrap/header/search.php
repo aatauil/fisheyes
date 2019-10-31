@@ -135,6 +135,21 @@ if (!empty($_GET['searchInput']) && !isset($_POST['genre'])) {
 
 else if (isset($_POST['genre']) && $_POST['genre'] == 'Horreur') {
     include "movie-Genres/horreur.php";
+} 
+
+else if (isset($_POST['genre']) && $_POST['genre'] == 'Comedy') {
+    include "movie-Genres/comedy.php";
+}
+
+else if (isset($_POST['genre']) && $_POST['genre'] == 'Thriller') {
+    include "movie-Genres/thriller.php";
+}
+
+else if (isset($_POST['genre']) && $_POST['genre'] == "Guerre") {
+    include "movie-Genres/war.php";
+}
+else if (isset($_POST['genre']) && $_POST['genre'] == "SF") {
+    include "movie-Genres/scifi.php";
 }
 
 // default setting

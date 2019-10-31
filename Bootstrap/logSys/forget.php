@@ -15,7 +15,7 @@ if (isset($_POST['forget'])) {
         $resultat = $req->fetch();
         $req->closeCursor(); 
 
-        if ($$resultat[0] != 0) {
+        if ($resultat[0] != 0) {
 
             // generate new password
 
