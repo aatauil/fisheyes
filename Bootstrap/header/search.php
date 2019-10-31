@@ -1,5 +1,4 @@
-<?php 
-session_start();
+<?php
 $API_key = "4af2589deef3c4d1a028374023d93f3e";
 
 //condtion pour afficher la barre des commentaires ou non.
@@ -8,17 +7,23 @@ if (!empty($_SESSION['user'])) {
                 <input class="form-control col-8" type="text" name="commentaire">
                 <button class="btn btn-film ml-3 mr-3"type="submit" name="envoyer">Envoyer</button>
                 </form>';
-    if(isset($_POST['send'])) {
-        $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
-        $commentaire = htmlspecialchars($_POST['commentaire']);
-        $req = $bdd -> prepare('INSERT INTO commentaire (id users, id movies, comment, date) Values(? ,? ,? , NOW())');
-        $req = $bdd -> execute(array($_SESSION['user'], $info['id'], $commentaire ));
-        $req -> closeCursor();
-    }
+    //if(isset($_POST['commentaire'])) {
+        
+        //$bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
+        //$commentaire = htmlspecialchars($_POST['commentaire']);
+        
+       //$data=[':id_user'=> $_SESSION['user'],
+       //':id_movie'=> $info['id'],
+       //':commentaire'=> $commentaire];
+        
+        //$req = $bdd -> prepare('INSERT INTO commentaire(id users, id movies, comment, date_commentaire) Values(:id_user,:id_movie,:commentaire,NOW())');
+        //$req-> execute($data);
+        
+        //$req -> closeCursor();
+    //}
 } else {
     $message = 'ERROR';
 }
-
 
 // if search input exists
 if (!empty($_POST['searchInput'])) {
@@ -52,18 +57,34 @@ if (!empty($_POST['searchInput'])) {
 
     if ($err) {
         echo "cURL Error #:" . $err;
-        } else {
+    } else {
                 $i = 0;
                 $imgSize = "/w300";
                 $poster = 'poster_path';
                 $overview = 'overview';
                 $send = 'method="POST"';
     
-                foreach($movieInfo[$i] as $info){
+                foreach($movieInfo as $info){
+                    
+                    if(isset($_POST['commentaire'])) {
+                        
+                        $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
+                        $commentaire = htmlspecialchars($_POST['commentaire']);
+                        
+                        $data=[':id_user'=> $_SESSION['user'],
+                        ':id_movie'=> $info['id'],
+                        ':commentaire'=> $commentaire];
+        
+                        $req = $bdd -> prepare('INSERT INTO commentaire(id users, id movies, comment, date_commentaire) Values(:id_user,:id_movie,:commentaire,NOW())');
+                        $req-> execute($data);
+        
+                        $req -> closeCursor();
+                        }
+                        echo 'soufiane';
                     $PosterPath = $info[$poster];
     
                     // insert message "image non disponible" when image not found
-                    if ($movieInfo[$i]['backdrop_path'] == "") {
+                    if ($info['backdrop_path'] == "") {
                         $image = "<p>Image non disponible</p>";
                     } else {
                         $image = '<img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">';
@@ -93,6 +114,7 @@ if (!empty($_POST['searchInput'])) {
                                             <div>
                                                 <h2>'.$info['title'].'</h2>
                                                 <p> '.$info['overview'].'</p>
+                                                <p>'.$info['id'].'</p>
                                                 <p>'.$info['vote_average'].'/10</p>
                                             </div>
                                             <div>'

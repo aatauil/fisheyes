@@ -1,7 +1,7 @@
 <?php
     $pageNumber = 0;
     // one page = 20 movies , 5 pages = 100movies
-    $maxPages = 20;
+    $maxPages = 3;
     //for loop to get more movies shown on same page
     $comptage = 0;
         for($y = 1; $y < $maxPages ; $y++){
@@ -28,21 +28,20 @@
         if ($err) {
         echo "cURL Error #:" . $err;
         } else {
-            $i = 0;
             $imgSize = "/w300";
             $poster = 'poster_path';
             $overview = 'overview';
-            foreach($movieInfo[$i] as $info){
-                
-                $PosterPath = $movieInfo[$i][$poster];
+            foreach($movieInfo as $info){
+
+                $PosterPath = $info[$poster];
             // PUT CARD ON SCREEN WITH EACH MOVIE
                 echo 
                 '<div class="col-lg-2 col-md-6 mb-4">
                     <div class="card movie">
                         <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
                         <div class="card-footer text-white text-left">
-                            <p><bold>'.$movieInfo[$i]['title'].'</bold></p>
-                            <p>'.$movieInfo[$i]['vote_average'].'/10</p>
+                            <p><bold>'.$info['title'].'</bold></p>
+                            <p>'.$info['vote_average'].'/10</p>
                         </div>
                     </div>
                 </div>
@@ -56,9 +55,9 @@
                                     </div>
                                     <div class="col">
                                         <div>
-                                            <h2>'.$movieInfo[$i]['title'].'</h2>
-                                            <p> '.$movieInfo[$i]['overview'].'</p>
-                                            <p>'.$movieInfo[$i]['vote_average'].'/10</p>
+                                            <h2>'.$info['title'].'</h2>
+                                            <p> '.$info['overview'].'</p>
+                                            <p>'.$info['vote_average'].'/10</p>
                                         </div>
                                         <div>'
                                             .$message.//variable pour afficher la barre des commentaires ou non.
@@ -73,7 +72,6 @@
                         </div>
                     </div>
                 </div>';
-            $i += 1;
             $comptage += 1;
             } 
         }
