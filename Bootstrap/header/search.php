@@ -7,28 +7,14 @@ if (!empty($_SESSION['user'])) {
                 <input class="form-control col-8" type="text" name="commentaire">
                 <button class="btn btn-film ml-3 mr-3"type="submit" name="envoyer">Envoyer</button>
                 </form>';
-    //if(isset($_POST['commentaire'])) {
-        
-        //$bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
-        //$commentaire = htmlspecialchars($_POST['commentaire']);
-        
-       //$data=[':id_user'=> $_SESSION['user'],
-       //':id_movie'=> $info['id'],
-       //':commentaire'=> $commentaire];
-        
-        //$req = $bdd -> prepare('INSERT INTO commentaire(id users, id movies, comment, date_commentaire) Values(:id_user,:id_movie,:commentaire,NOW())');
-        //$req-> execute($data);
-        
-        //$req -> closeCursor();
-    //}
 } else {
     $message = 'ERROR';
 }
 
 // if search input exists
-if (!empty($_GET['searchInput']) && !isset($_POST['genre'])) {
+if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
     // Search bar get data
-    $searchInput =  $_GET["searchInput"];
+    $searchInput =  $_POST["searchInput"];
     $queryString = '&query='.$searchInput;
 
     //different API CALLs
@@ -65,21 +51,6 @@ if (!empty($_GET['searchInput']) && !isset($_POST['genre'])) {
                 $send = 'method="POST"';
     
                 foreach($movieInfo as $info){
-                    
-                    if(isset($_POST['commentaire'])) {
-                        
-                        $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
-                        $commentaire = htmlspecialchars($_POST['commentaire']);
-                        
-                        $data=[':id_user'=> $_SESSION['user'],
-                        ':id_movie'=> $info['id'],
-                        ':commentaire'=> $commentaire];
-        
-                        $req = $bdd -> prepare('INSERT INTO commentaire(id users, id movies, comment, date_commentaire) Values(:id_user,:id_movie,:commentaire,NOW())');
-                        $req-> execute($data);
-                        $req -> closeCursor();
-                        header('location:../index.php?searchInput='.$_GET["searchInput"].'');
-                        }
                     $PosterPath = $info[$poster];
     
                     // insert message "image non disponible" when image not found

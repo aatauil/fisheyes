@@ -73,8 +73,23 @@
                     </div>
                 </div>';
             $comptage += 1;
-            } 
-        }
+            }
+        } 
     }
+    //condition pour envoyer le commentaire dans la base de donnée
+    if(isset($_POST['commentaire'])) {
+                        
+        $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
+        $commentaire = htmlspecialchars($_POST['commentaire']);
+        
+        $data=[':id_users'=> $_SESSION['user'],
+        ':id_movies'=> $info['id'],
+        ':comment'=> $commentaire];
+        
+        $req = $bdd -> prepare('INSERT INTO commentaire(id_users, id_movies, comment, date_commentaire) Values(:id_users,:id_movies,:comment,NOW())');
+        $req-> execute($data);
+        $req-> closeCursor();
+    } 
+
 
     ?>

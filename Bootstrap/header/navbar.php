@@ -15,7 +15,7 @@ if (!empty($_SESSION['user'])) {
         <a class="navbar-brand text-white" href="../Bootstrap">FishEyes</a>
         <div class="d-flex">
             <!-- searchBar -->
-            <form method="get" id="searchBar" class="searchBar">
+            <form method="post" id="searchBar" class="searchBar">
                 <input type="text" class="form-control" name="searchInput">
             </form>
             <button class="btn text-white shadow-none"><i class="fas fa-search text-white" id="search"></i></button>
