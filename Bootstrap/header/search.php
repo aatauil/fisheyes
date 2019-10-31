@@ -26,9 +26,9 @@ if (!empty($_SESSION['user'])) {
 }
 
 // if search input exists
-if (!empty($_POST['searchInput'])) {
+if (!empty($_GET['searchInput'])) {
     // Search bar get data
-    $searchInput =  $_POST["searchInput"];
+    $searchInput =  $_GET["searchInput"];
     $queryString = '&query='.$searchInput;
 
     //different API CALLs
@@ -77,15 +77,14 @@ if (!empty($_POST['searchInput'])) {
         
                         $req = $bdd -> prepare('INSERT INTO commentaire(id users, id movies, comment, date_commentaire) Values(:id_user,:id_movie,:commentaire,NOW())');
                         $req-> execute($data);
-        
                         $req -> closeCursor();
+                        header('location:../index.php?searchInput='.$_GET["searchInput"].'');
                         }
-                        echo 'soufiane';
                     $PosterPath = $info[$poster];
     
                     // insert message "image non disponible" when image not found
-                    if ($info['backdrop_path'] == "") {
-                        $image = "<p>Image non disponible</p>";
+                    if ($info['poster_path'] == "") {
+                        $image = "<p class='text-white'>Image non disponible</p>";
                     } else {
                         $image = '<img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">';
                     }
@@ -94,7 +93,7 @@ if (!empty($_POST['searchInput'])) {
                     echo 
                     '<div class="col-lg-2 col-md-6 mb-4">
                         <div class="card movie">
-                            <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
+                            '.$image.'
                             <div class="card-footer text-white text-left">
                                 <p>'.$info['title'].'</p>
                                 <p>'.$info['id'].'</p>
@@ -134,6 +133,6 @@ if (!empty($_POST['searchInput'])) {
 } 
 
 // default setting
-if (empty($_POST['searchInput'])) {
+if (empty($_GET['searchInput'])) {
     include "movie-Genres/popular.php";
 }
