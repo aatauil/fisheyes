@@ -26,7 +26,7 @@ if (!empty($_SESSION['user'])) {
 }
 
 // if search input exists
-if (!empty($_GET['searchInput'])) {
+if (!empty($_GET['searchInput']) && !isset($_POST['genre'])) {
     // Search bar get data
     $searchInput =  $_GET["searchInput"];
     $queryString = '&query='.$searchInput;
@@ -132,7 +132,12 @@ if (!empty($_GET['searchInput'])) {
             }
 } 
 
+
+else if (isset($_POST['genre']) && $_POST['genre'] == 'Horreur') {
+    include "movie-Genres/horreur.php";
+}
+
 // default setting
-if (empty($_GET['searchInput'])) {
+else {
     include "movie-Genres/popular.php";
 }
