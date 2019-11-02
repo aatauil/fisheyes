@@ -38,21 +38,6 @@ if ($err) {
             $send = 'method="POST"';
 
             foreach($movieInfo as $info){
-                
-                if(isset($_POST['commentaire'])) {
-                    
-                    $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
-                    $commentaire = htmlspecialchars($_POST['commentaire']);
-                    
-                    $data=[':id_user'=> $_SESSION['user'],
-                    ':id_movie'=> $info['id'],
-                    ':commentaire'=> $commentaire];
-    
-                    $req = $bdd -> prepare('INSERT INTO commentaire(id users, id movies, comment, date_commentaire) Values(:id_user,:id_movie,:commentaire,NOW())');
-                    $req-> execute($data);
-                    $req -> closeCursor();
-                    header('location:../index.php?searchInput='.$_GET["searchInput"].'');
-                    }
                 $PosterPath = $info[$poster];
 
                 // insert message "image non disponible" when image not found
@@ -90,9 +75,7 @@ if ($err) {
                                             <p>'.$info['vote_average'].'/10</p>
                                         </div>
                                         <div>'
-                                            .$message. //variable pour afficher la barre des commentaires ou non.
-
-
+                                            .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
                                         '</div>
                                     </div>
                                 </div>

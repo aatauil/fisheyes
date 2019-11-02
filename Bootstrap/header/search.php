@@ -1,15 +1,19 @@
 <?php
-$API_key = "4af2589deef3c4d1a028374023d93f3e";
 
-//condtion pour afficher la barre des commentaires ou non.
-if (!empty($_SESSION['user'])) {
-    $message = '<form method="POST" class="form-inline row ">
-                <input class="form-control col-8" type="text" name="commentaire">
-                <button class="btn btn-film ml-3 mr-3"type="submit" name="envoyer">Envoyer</button>
-                </form>';
-} else {
-    $message = 'ERROR';
+function commentaire($id) {
+    //condtion pour afficher le boutton des commentaires ou non.
+  if (!empty($_SESSION['user'])) {
+      return   '<form action="./movie-Genres/commentaire.php" method="GET" class="form-inline row ">
+             <input type="text" value="'.$id.'" name="id_movies">
+             <button class="btn btn-film ml-3 mr-3"type="submit">Commentaire</button>
+             </form>';
+  } else {
+      return 'ERROR';
+  }
 }
+
+
+$API_key = "4af2589deef3c4d1a028374023d93f3e";
 
 // if search input exists
 if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
@@ -88,9 +92,7 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                                                 <p>'.$info['vote_average'].'/10</p>
                                             </div>
                                             <div>'
-                                                .$message. //variable pour afficher la barre des commentaires ou non.
-
-    
+                                                .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
                                             '</div>
                                         </div>
                                     </div>
