@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500&display=swap');
+
+.inline {
+    display : inline;
+}
+
+body {
+    font-family : 'Montserrat', sans-serif;
+    background-color: rgba(0, 0, 0, 0.952);
+    font-size: 14px;
+}
+
+.left {
+    margin-left: 10.5%;
+}
+
+.bg-blur{
+    filter: blur(5px);
+
+}
+
+
+
+.blur-content{
+    width: 100vw;
+    height: 100vh;
+    filter: blur(5px);
+    background-color: rgba(83, 83, 83, 0.123);
+
+}
+
+.modal-dialog{
+    margin: auto 0 !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5px);
+
+}
+
+.modal-content{
+    background-color: rgba(0, 0, 0, 0);
+    color : white;
+}
+
+.nav2 {
+    margin-top : 56px;
+}
+
+.navbar{
+    background-color: rgba(0, 0, 0, 0.589);
+}
+
+.contenu {
+    position : relative;
+    top : 60px;
+}
+
+.navend {
+    position : absolute;
+}
+
+.navbar-1{
+    background-color :#B32323;
+}
+
+.navbar-2{
+    background-color : black;
+}
+
+.searchBar {
+    opacity : 0;
+    transition : all 0.2s ease-in-out;
+}
+
+.card-footer{
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px 3px !important;
+
+}
+
+.card{
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.animation {
+    opacity : 1;
+}
+
+p{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.btn-film { 
+    color: #ffffff; 
+    background-color: rgb(192, 13, 228); 
+    border-color: #FF6F6F; 
+}        
+
+.btn-film:hover, 
+.btn-film:focus, 
+.btn-film:active, 
+.btn-film.active, 
+.open .dropdown-toggle.btn-film { 
+    color: #ffffff; 
+    background-color: #FF6F6F; 
+    border-color: #FF6F6F; 
+} 
+
+.btn-film:active, 
+.btn-film.active, 
+.open .dropdown-toggle.btn-film { 
+    background-image: none; 
+} 
+
+.btn-film.disabled, 
+.btn-film[disabled], 
+fieldset[disabled] .btn-film, 
+.btn-film.disabled:hover, 
+.btn-film[disabled]:hover, 
+fieldset[disabled] .btn-film:hover, 
+.btn-film.disabled:focus, 
+.btn-film[disabled]:focus, 
+fieldset[disabled] .btn-film:focus, 
+.btn-film.disabled:active, 
+.btn-film[disabled]:active, 
+fieldset[disabled] .btn-film:active, 
+.btn-film.disabled.active, 
+.btn-film[disabled].active, 
+fieldset[disabled] .btn-film.active { 
+    background-color: #FF6F6F; 
+    border-color: #FF6F6F; 
+} 
+
+.btn-film .badge { 
+    color: #FF6F6F; 
+    background-color: #ffffff; 
+}
