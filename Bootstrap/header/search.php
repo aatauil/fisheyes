@@ -48,13 +48,35 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
     if ($err) {
         echo "cURL Error #:" . $err;
     } else {
+        //api Url data variables
                 $i = 0;
                 $imgSize = "/w300";
                 $poster = 'poster_path';
                 $overview = 'overview';
                 $send = 'method="POST"';
+
+                //loop through list with each movie to get specific data
     
                 foreach($movieInfo as $info){
+<<<<<<< Updated upstream
+=======
+                    
+                    if(isset($_POST['commentaire'])) {
+                        // assign commentary to each movie 
+                        
+                        $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
+                        $commentaire = htmlspecialchars($_POST['commentaire']);
+                        
+                        $data=[':id_user'=> $_SESSION['user'],
+                        ':id_movie'=> $info['id'],
+                        ':commentaire'=> $commentaire];
+        
+                        $req = $bdd -> prepare('INSERT INTO commentaire(id users, id movies, comment, date_commentaire) Values(:id_user,:id_movie,:commentaire,NOW())');
+                        $req-> execute($data);
+                        $req -> closeCursor();
+                        header('location:../index.php?searchInput='.$_GET["searchInput"].'');
+                        }
+>>>>>>> Stashed changes
                     $PosterPath = $info[$poster];
     
                     // insert message "image non disponible" when image not found
@@ -105,7 +127,7 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
             }
 } 
 
-
+//click checker for right genre
 else if (isset($_POST['genre']) && $_POST['genre'] == 'Horreur') {
     include "movie-Genres/horreur.php";
 } 
