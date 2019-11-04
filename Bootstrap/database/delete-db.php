@@ -7,10 +7,10 @@
     }
      
     if ( !empty($_POST)) {
-        // keep track post values
+        // Récupération de l'id
         $id = $_POST['id'];
          
-        // delete data
+        // Efface les données de l'id
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "DELETE FROM users  WHERE id = ?";

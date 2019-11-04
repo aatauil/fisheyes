@@ -11,17 +11,17 @@
     }
      
     if ( !empty($_POST)) {
-        // keep track validation errors
+        // Gestion des erreurs
         $usernameError = null;
         $emailError = null;
         $password = null;
          
-        // keep track post values
+        // Récupération des variables POST
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
          
-        // validate input
+        // Validation des données encodées
         $valid = true;
         if (empty($username)) {
             $usernameError = 'Please enter Username';
@@ -41,7 +41,7 @@
             $valid = false;
         }
          
-        // update data
+        // Mise à jour des données
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -83,7 +83,7 @@
                     <div class="row">
                         <h3>Update a Customer</h3>
                     </div>
-             
+                    <!-- Affichage du formulaire de mise à jour -->
                     <form class="form-horizontal" action="update-db.php?id=<?php echo $id?>" method="post">
                       <div class="control-group <?php echo !empty($usernameError)?'error':'';?>">
                         <label class="control-label">Username</label>

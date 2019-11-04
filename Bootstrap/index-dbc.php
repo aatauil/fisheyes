@@ -16,23 +16,28 @@
     </div>
     <div class="row">
         <p>
+            <form method="post" action="index-dbc.php"><button type="submit" name="tableName" value="users">Users table</button></form>
+        </p>
+        <p>
             <a href="create-db.php" class="btn btn-success">Create</a>
         </p>
+        <?php
+            echo $_POST["tableName"];
+        ?>
         <table class="table table-striped table-bordered">
             <thead>
-            <tr>
-                <th>username</th>
-                <th>email</th>
-                <th>password</th>
-                <th>Action</th> 
-            </tr>
+                <tr>
+                    <th>username</th>
+                    <th>email</th>
+                    <th>password</th>
+                    <th>Action</th> 
+                </tr>
             </thead>
             <tbody>
                 <?php 
                 include 'database.php';
                 $pdo = Database::connect();
                 $sql = 'SELECT * FROM users ORDER BY username DESC';
-                // Affichage du contenu de la table et des boutons: Read, Update, Delete
                 foreach ($pdo->query($sql) as $row) {
                     echo '<tr>';
                     echo '<td>' . $row['username'] . '</td>';

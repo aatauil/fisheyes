@@ -4,7 +4,7 @@
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
     }
-     
+    // Lecture de la base de données 
     if ( null==$id ) {
         header("Location: database/index.php");
     } else {
@@ -35,7 +35,7 @@
         <div class="row">
             <h3>Read a Customer</h3>
         </div>
-            
+        <!-- Affichage des données -->    
         <div class="form-horizontal" >
             <div class="control-group">
             <label class="control-label">username</label>

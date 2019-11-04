@@ -13,7 +13,7 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// Valider Engages 
+// Validation les données encodées
 $valid = true;
 if (empty($username)) {
     $usernameError = 'Veuillez entrer un username';
@@ -35,7 +35,7 @@ if (empty($password)) {
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 }
 
-// Entrer des données
+// Enregistrement des données
 if ($valid) {
      $pdo = Database::connect();
      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -65,6 +65,7 @@ if ($valid) {
         <div class="row">
             <h3>Create a User</h3>
         </div>
+        <!-- Formulaire d'encodage des données -->
         <form class="form-horizontal" action="" method="post">
             <div class="form-group <?php echo !empty($nameError)?'has-error':'';?>">
                 <label class="control-label">Name</label>
