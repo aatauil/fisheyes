@@ -1,5 +1,5 @@
 <?php
-
+    //api key
 $API_key = "4af2589deef3c4d1a028374023d93f3e";
 
     $pageNumber = '1';
@@ -9,6 +9,8 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
 
     //different API CALLs
     $movieDetails = 'discover/movie';
+
+    //API call using cURL
     
     $curl = curl_init();
 
@@ -22,7 +24,7 @@ curl_setopt_array($curl, array(
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_POSTFIELDS => "{}",
     ));
-
+    //DECODE json file
 $response = json_decode(curl_exec($curl),true); 
 $movieInfo = $response["results"];
 $err = curl_error($curl);
@@ -31,6 +33,7 @@ curl_close($curl);
 if ($err) {
     echo "cURL Error #:" . $err;
 } else {
+    //different data variables for API url
             $i = 0;
             $imgSize = "/w300";
             $poster = 'poster_path';
