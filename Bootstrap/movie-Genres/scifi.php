@@ -12,6 +12,8 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
     
     $curl = curl_init();
 
+    //API call using cURL
+
 curl_setopt_array($curl, array(
     CURLOPT_URL => "https://api.themoviedb.org/3/$movieDetails?api_key=$API_key&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=$genreNumber",
     CURLOPT_RETURNTRANSFER => true,
@@ -22,6 +24,7 @@ curl_setopt_array($curl, array(
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_POSTFIELDS => "{}",
     ));
+    //DECODE json file
 
 $response = json_decode(curl_exec($curl),true); 
 $movieInfo = $response["results"];
@@ -31,6 +34,7 @@ curl_close($curl);
 if ($err) {
     echo "cURL Error #:" . $err;
 } else {
+    //different data variables for API url
             $i = 0;
             $imgSize = "/w300";
             $poster = 'poster_path';
