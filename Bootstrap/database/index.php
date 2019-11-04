@@ -16,7 +16,7 @@
     </div>
     <div class="row">
         <p>
-            <a href="database/create-db.php" class="btn btn-success">Create</a>
+            <a href="create-db.php" class="btn btn-success">Create</a>
         </p>
         <table class="table table-striped table-bordered">
             <thead>
@@ -29,7 +29,7 @@
             </thead>
             <tbody>
                 <?php 
-                include 'database/database.php';
+                include 'database.php';
                 $pdo = Database::connect();
                 $sql = 'SELECT * FROM users ORDER BY username DESC';
                 foreach ($pdo->query($sql) as $row) {
@@ -38,11 +38,11 @@
                     echo '<td>' . $row['email'] . '</td>';
                     echo '<td>' . $row['password'] . '</td>';
                     echo '<td width=250>';
-                    echo '<a class="btn btn-secondary" href="database/read-db.php?id='.$row['id'].'">Read</a>';
+                    echo '<a class="btn btn-secondary" href="read-db.php?id='.$row['id'].'">Read</a>';
                     echo ' ';
-                    echo '<a class="btn btn-success" href="database/update-db.php?id='.$row['id'].'">Update</a>';
+                    echo '<a class="btn btn-success" href="update-db.php?id='.$row['id'].'">Update</a>';
                     echo ' ';
-                    echo '<a class="btn btn-danger" href="database/delete-db.php?id='.$row['id'].'">Delete</a>';
+                    echo '<a class="btn btn-danger" href="delete-db.php?id='.$row['id'].'">Delete</a>';
                     echo '</td>';
                     echo '</tr>';
                 }

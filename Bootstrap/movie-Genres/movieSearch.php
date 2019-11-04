@@ -5,13 +5,11 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
     $pageNumber = '1';
 
     // ID assigned to each genre
-    $genreNumber = "53";
 
     //different API CALLs
     $movieDetails = 'discover/movie';
     
     $curl = curl_init();
-      //API call using cURL
 
 curl_setopt_array($curl, array(
     CURLOPT_URL => "https://api.themoviedb.org/3/$movieDetails?api_key=$API_key&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=$genreNumber",
@@ -23,7 +21,7 @@ curl_setopt_array($curl, array(
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_POSTFIELDS => "{}",
     ));
-     //DECODE json file
+
 $response = json_decode(curl_exec($curl),true); 
 $movieInfo = $response["results"];
 $err = curl_error($curl);
@@ -32,7 +30,6 @@ curl_close($curl);
 if ($err) {
     echo "cURL Error #:" . $err;
 } else {
-    //different data variables for API url
             $i = 0;
             $imgSize = "/w300";
             $poster = 'poster_path';
@@ -57,7 +54,6 @@ if ($err) {
                         '.$image.'
                         <div class="card-footer text-white text-left">
                             <p>'.$info['title'].'</p>
-                            <p>'.$info['id'].'</p>
                             <p>'.$info['vote_average'].'/10</p>
                         </div>
                     </div>
@@ -74,7 +70,6 @@ if ($err) {
                                         <div>
                                             <h2>'.$info['title'].'</h2>
                                             <p> '.$info['overview'].'</p>
-                                            <p>'.$info['id'].'</p>
                                             <p>'.$info['vote_average'].'/10</p>
                                         </div>
                                         <div>'

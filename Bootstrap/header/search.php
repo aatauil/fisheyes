@@ -3,12 +3,11 @@
 function commentaire($id) {
     //condtion pour afficher le boutton des commentaires ou non.
   if (!empty($_SESSION['user'])) {
-      return   '<form action="./movie-Genres/commentaire.php" method="GET" class="form-inline row ">
-             <input type="text" value="'.$id.'" name="id_movies">
-             <button class="btn btn-film ml-3 mr-3"type="submit">Commentaire</button>
+      return   '<form action="./movie-Genres/commentaire.php" method="GET" class="form-inline row d-flex justify-content-center">
+             <button class="btn btn-film ml-3 mr-3"type="submit" name="id_movies" value="'.$id.'">Go to comment page</button>
              </form>';
   } else {
-      return 'ERROR';
+      return 'You are not logged in';
   }
 }
 
@@ -48,35 +47,13 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
     if ($err) {
         echo "cURL Error #:" . $err;
     } else {
-        //api Url data variables
                 $i = 0;
                 $imgSize = "/w300";
                 $poster = 'poster_path';
                 $overview = 'overview';
                 $send = 'method="POST"';
-
-                //loop through list with each movie to get specific data
     
                 foreach($movieInfo as $info){
-<<<<<<< Updated upstream
-=======
-                    
-                    if(isset($_POST['commentaire'])) {
-                        // assign commentary to each movie 
-                        
-                        $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;', 'root', '');
-                        $commentaire = htmlspecialchars($_POST['commentaire']);
-                        
-                        $data=[':id_user'=> $_SESSION['user'],
-                        ':id_movie'=> $info['id'],
-                        ':commentaire'=> $commentaire];
-        
-                        $req = $bdd -> prepare('INSERT INTO commentaire(id users, id movies, comment, date_commentaire) Values(:id_user,:id_movie,:commentaire,NOW())');
-                        $req-> execute($data);
-                        $req -> closeCursor();
-                        header('location:../index.php?searchInput='.$_GET["searchInput"].'');
-                        }
->>>>>>> Stashed changes
                     $PosterPath = $info[$poster];
     
                     // insert message "image non disponible" when image not found
@@ -93,7 +70,6 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                             '.$image.'
                             <div class="card-footer text-white text-left">
                                 <p>'.$info['title'].'</p>
-                                <p>'.$info['id'].'</p>
                                 <p>'.$info['vote_average'].'/10</p>
                             </div>
                         </div>
@@ -110,10 +86,9 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                                             <div>
                                                 <h2>'.$info['title'].'</h2>
                                                 <p> '.$info['overview'].'</p>
-                                                <p>'.$info['id'].'</p>
                                                 <p>'.$info['vote_average'].'/10</p>
                                             </div>
-                                            <div>'
+                                            <div class="d-flex justify-content-center">'
                                                 .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
                                             '</div>
                                         </div>
@@ -127,24 +102,29 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
             }
 } 
 
-//click checker for right genre
+
 else if (isset($_POST['genre']) && $_POST['genre'] == 'Horreur') {
-    include "movie-Genres/horreur.php";
+    $genreNumber = "27";
+    include "movie-Genres/movieSearch.php";
 } 
 
 else if (isset($_POST['genre']) && $_POST['genre'] == 'Comedy') {
-    include "movie-Genres/comedy.php";
+    $genreNumber = "35";
+    include "movie-Genres/movieSearch.php";
 }
 
 else if (isset($_POST['genre']) && $_POST['genre'] == 'Thriller') {
-    include "movie-Genres/thriller.php";
+    $genreNumber = "53";
+    include "movie-Genres/movieSearch.php";
 }
 
 else if (isset($_POST['genre']) && $_POST['genre'] == "Guerre") {
-    include "movie-Genres/war.php";
+    $genreNumber = "10752";
+    include "movie-Genres/movieSearch.php";
 }
 else if (isset($_POST['genre']) && $_POST['genre'] == "SF") {
-    include "movie-Genres/scifi.php";
+    $genreNumber = "878";
+    include "movie-Genres/movieSearch.php";
 }
 
 // default setting

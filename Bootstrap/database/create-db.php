@@ -1,6 +1,6 @@
 <?php 
 
-require 'database/database.php';
+require 'database.php';
 
 if ( !empty($_POST)) {
 // Saisie des erreurs de validation
@@ -43,7 +43,7 @@ if ($valid) {
      $q = $pdo->prepare($sql);
      $q->execute(array($username,$email,$passwordHash));
      Database::disconnect();
-     header("Location: database/index-db.php");
+     header("Location: index.php");
 }
       }
 ?>
@@ -65,7 +65,7 @@ if ($valid) {
         <div class="row">
             <h3>Create a User</h3>
         </div>
-        <form class="form-horizontal" action="logSys/create.php" method="post">
+        <form class="form-horizontal" action="" method="post">
             <div class="form-group <?php echo !empty($nameError)?'has-error':'';?>">
                 <label class="control-label">Name</label>
                 <div class="controls">
@@ -95,7 +95,7 @@ if ($valid) {
             </div>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Create</button>
-                <a class="btn btn-secondary" href="database/index-db.php">Back</a>
+                <a class="btn btn-secondary" href="index.php">Back</a>
             </div>
         </form>
     </div>

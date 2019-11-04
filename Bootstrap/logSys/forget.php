@@ -1,7 +1,7 @@
 <?php 
 if (isset($_POST['forget'])) {
         try {
-        $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;charset=utf8', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=id11453176_fisheyes;charset=utf8', 'id11453176_daniel43886', 'c=5CPBky');
         } 
         catch (Exception $e) {
         die('Erreur : ' .$e->getMessage());
