@@ -93,10 +93,14 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                                             <div class="d-flex justify-content-center">'
 =======
                                             <div class="d-flex justify-content-center">
+<<<<<<< HEAD
                                             <form method="post" action="#">
                                               <button type="submit" name="add" class="btn btn-dark" value='.$info['id'].'>Add to cart</button>
                                             </form>'
 >>>>>>> dad325e4bf2c664677d454aec1635f1693790d28
+=======
+                                              <button type="submit" name="add" class="btn btn-dark" value='.$info['id'].'>Add to cart</button>'
+>>>>>>> e04b1082bcee3758884767097998adb4f6c5007a
                                                 .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
                                             '</div>
                                         </div>

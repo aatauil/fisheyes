@@ -73,9 +73,7 @@ if ($err) {
                                             <p>'.$info['vote_average'].'/10</p>
                                         </div>
                                         <div>
-                                        <form method="post" action="#">
-                                          <button type="submit" name="add" class="btn btn-dark" value='.$info['id'].'>Add to cart</button>
-                                        </form>'
+                                          <button type="submit" name="add" class="btn btn-dark" value='.$info['id'].'>Add to cart</button>'
                                             .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
                                         '</div>
                                     </div>
