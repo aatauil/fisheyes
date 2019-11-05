@@ -139,3 +139,21 @@ fieldset[disabled] .btn-film.active {
     color: #FF6F6F; 
     background-color: #ffffff; 
 }
+
+/*E-shop Page*/
+
+#emptyCart{
+    color: black !important;
+    text-align: center;
+    font-size: 30px;
+}
+.content{
+    background-color: white;
+    border-radius:5%;
+    margin:5px;
+    border-style: solid;;
+}
+.object{
+    border-style: solid ;
+    margin:5px;
+}
