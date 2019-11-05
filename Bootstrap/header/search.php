@@ -88,6 +88,7 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                                                 <p> '.$info['overview'].'</p>
                                                 <p>'.$info['vote_average'].'/10</p>
                                             </div>
+                                            <p>blabla</p>
                                             <div class="d-flex justify-content-center">'
                                                 .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
                                             '</div>
