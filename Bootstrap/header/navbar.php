@@ -18,6 +18,8 @@ if (!empty($_SESSION['user'])) {
                 <input type="text" class="form-control" name="searchInput">
             </form>
             <button class="btn text-white shadow-none"><i class="fas fa-search text-white" id="search"></i></button>
+            <!-- eshop button -->
+            <button class="btn text-white shadow-none" href="#"><i class="fas fa-shopping-cart" id="shop"></i></button>
             <!-- login button -->
             <button class="btn text-white shadow-none" data-toggle="modal" data-target="#Modal"><?=$affichage?></button>
         </div>
