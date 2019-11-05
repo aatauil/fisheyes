@@ -8,7 +8,7 @@ $API_key = "4af2589deef3c4d1a028374023d93f3e";
 
     //different API CALLs
     $movieDetails = 'discover/movie';
-    
+
     $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -22,7 +22,7 @@ curl_setopt_array($curl, array(
     CURLOPT_POSTFIELDS => "{}",
     ));
 
-$response = json_decode(curl_exec($curl),true); 
+$response = json_decode(curl_exec($curl),true);
 $movieInfo = $response["results"];
 $err = curl_error($curl);
 
@@ -37,7 +37,7 @@ if ($err) {
             $send = 'method="POST"';
 
             foreach($movieInfo as $info){
-                
+
                 $PosterPath = $info[$poster];
 
                 // insert message "image non disponible" when image not found
@@ -48,7 +48,7 @@ if ($err) {
                 }
 
             // PUT CARD ON SCREEN WITH EACH MOVIE
-                echo 
+                echo
                 '<div class="col-lg-2 col-md-6 mb-4">
                     <div class="card movie">
                         '.$image.'
@@ -72,7 +72,10 @@ if ($err) {
                                             <p> '.$info['overview'].'</p>
                                             <p>'.$info['vote_average'].'/10</p>
                                         </div>
-                                        <div>'
+                                        <div>
+                                        <form method="post" action="#">
+                                          <button type="submit" name="add" class="btn btn-dark" value='.$info['id'].'>Add to cart</button>
+                                        </form>'
                                             .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
                                         '</div>
                                     </div>
@@ -82,6 +85,6 @@ if ($err) {
                     </div>
                 </div>';
             $i += 1;
-            } 
+            }
         }
     ?>
