@@ -22,7 +22,7 @@ for($y = 1; $y < $maxPages ; $y++){
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_POSTFIELDS => "{}",
     ));
-    $response = json_decode(curl_exec($curl),true); 
+    $response = json_decode(curl_exec($curl),true);
     $movieInfo = $response['results'];
     $err = curl_error($curl);
     curl_close($curl);
@@ -36,7 +36,7 @@ for($y = 1; $y < $maxPages ; $y++){
     //$idMovies = $info['id'];
     $PosterPath = $info[$poster];
     // PUT CARD ON SCREEN WITH EACH MOVIE
-    echo 
+    echo
         '<div class="col-lg-2 col-md-6 mb-4">
             <div class="card movie">
                 <img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">
@@ -60,7 +60,8 @@ for($y = 1; $y < $maxPages ; $y++){
                                 <p> '.$info['overview'].'</p>
                                 <p>'.$info['vote_average'].'/10</p>
                                 </div>
-                                <div>'
+                                <div>
+                                  <button type="submit" name="add" class="btn btn-dark" value='.$info['id'].'>Add to cart</button>'
                                     .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
                                 '</div>
                             </div>
@@ -71,7 +72,7 @@ for($y = 1; $y < $maxPages ; $y++){
         </div>';
     $comptage += 1;
     }
-    } 
-} 
+    }
+}
 
 ?>

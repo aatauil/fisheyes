@@ -52,19 +52,19 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                 $poster = 'poster_path';
                 $overview = 'overview';
                 $send = 'method="POST"';
-    
+
                 foreach($movieInfo as $info){
                     $PosterPath = $info[$poster];
-    
+
                     // insert message "image non disponible" when image not found
                     if ($info['poster_path'] == "") {
                         $image = "<p class='text-white'>Image non disponible</p>";
                     } else {
                         $image = '<img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">';
                     }
-    
+
                 // PUT CARD ON SCREEN WITH EACH MOVIE
-                    echo 
+                    echo
                     '<div class="col-lg-2 col-md-6 mb-4">
                         <div class="card movie">
                             '.$image.'
@@ -88,7 +88,8 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                                                 <p> '.$info['overview'].'</p>
                                                 <p>'.$info['vote_average'].'/10</p>
                                             </div>
-                                            <div class="d-flex justify-content-center">'
+                                            <div class="d-flex justify-content-center">
+                                              <button type="submit" name="add" class="btn btn-dark" value='.$info['id'].'>Add to cart</button>'
                                                 .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
                                             '</div>
                                         </div>
@@ -98,15 +99,15 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                         </div>
                     </div>';
                 $i += 1;
-                } 
+                }
             }
-} 
+}
 
 
 else if (isset($_POST['genre']) && $_POST['genre'] == 'Horreur') {
     $genreNumber = "27";
     include "movie-Genres/movieSearch.php";
-} 
+}
 
 else if (isset($_POST['genre']) && $_POST['genre'] == 'Comedy') {
     $genreNumber = "35";

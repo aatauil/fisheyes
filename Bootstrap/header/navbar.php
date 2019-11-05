@@ -1,9 +1,17 @@
-<?php 
+<?php
 if (!empty($_SESSION['user'])) {
     $affichage = $_SESSION['user'];
 } else {
     $affichage = "Log in";
 }
+if (isset($_POST['add'])) {
+  if(empty($_SESSION['cart'])){
+    $_SESSION['cart']=array($_POST['add']);
+  }else {
+    array_push($_SESSION['cart'],$_POST['add']);
+  }
+}
+
 ?>
 <nav class="navbar navbar-expand-lg navbar-light navbar-1">
     <button class="navbar-toggler" data-toggle="collapse" data-target=".navbars">
@@ -43,7 +51,7 @@ if (!empty($_SESSION['user'])) {
     </div>
 </nav>
 
-    
+
 <!-- login Modal -->
 
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
