@@ -18,11 +18,7 @@ if (isset($_POST['empty'])) {
   $_SESSION['cart'] = array();
 }
 $card="";
-<<<<<<< HEAD
-if ( !isset($_SESSION['cart'])||!$_SESSION['cart']) {
-=======
 if (!isset($_SESSION['cart']) || !$_SESSION['cart']) {
->>>>>>> 6f16e7d64b00dd217eb06a969ac2bc55fe690584
   $card = "Your cart is empty";
 }
 else {
