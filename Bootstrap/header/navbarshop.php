@@ -4,9 +4,6 @@ if (!empty($_SESSION['user'])) {
 } else {
     $affichage = "Log in";
 }
-if(isset($_POST['buy'])){
-  header("Location: ./shop.php");
-}
 if (isset($_POST['add'])) {
   if(empty($_SESSION['cart'])){
     $_SESSION['cart']=array($_POST['add']);
@@ -14,64 +11,16 @@ if (isset($_POST['add'])) {
     array_push($_SESSION['cart'],$_POST['add']);
   }
 }
-if (isset($_POST['empty'])) {
-  $_SESSION['cart'] = array();
-}
-$card="";
-if (!isset($_SESSION['cart']) || !$_SESSION['cart']) {
-  $card = "Your cart is empty";
-}
-else {
-  for($i = 0; $i < count($_SESSION['cart']); $i++){
-
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://api.themoviedb.org/3/movie/".$_SESSION['cart'][$i]."?language=en-US&api_key=b53ba6ff46235039543d199b7fdebd90",
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => "",
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 30,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "GET",
-      CURLOPT_POSTFIELDS => "{}",
-    ));
-
-    $response = json_decode(curl_exec($curl),true);
-    $err = curl_error($curl);
-
-    curl_close($curl);
-
-    if ($err) {
-      echo "cURL Error #:" . $err;
-    } else {
-      $card .= '<div class="card text-center m-3" style="width:14rem;">
-                  <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w185//'.$response['poster_path'].'" alt="Card image cap">
-                  <div class="card-body">
-                    <p class="card-text">'.$response['title'].'</p>
-                  </div>
-                </div>';
-    }
-  }
-}
 
 ?>
-
 <nav class="navbar navbar-expand-lg navbar-light navbar-1">
     <button class="navbar-toggler" data-toggle="collapse" data-target=".navbars">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse navbars justify-content-between" id="collapse_target1">
         <!-- logo -->
-        <a class="navbar-brand text-white" href="./index.php">FishEyes</a>
+        <a class="navbar-brand text-white" href="../index.php">FishEyes</a>
         <div class="d-flex">
-            <!-- searchBar -->
-            <form method="post" id="searchBar" class="searchBar">
-                <input type="text" class="form-control" name="searchInput">
-            </form>
-            <button class="btn text-white shadow-none"><i class="fas fa-search text-white" id="search"></i></button>
-            <!-- eshop button -->
-            <button class="btn text-white shadow-none" type="button" data-toggle="modal" data-target="#cart" ><i class="fas fa-shopping-cart" id="shop"></i></button>
             <!-- login button -->
             <button class="btn text-white shadow-none" data-toggle="modal" data-target="#Modal"><?=$affichage?></button>
         </div>
@@ -80,12 +29,6 @@ else {
 <nav class="navbar navbar-expand-lg mb-4">
     <div class="collapse navbar-collapse navbars justify-content-between" id="collapse_target2">
         <div class="d-flex">
-            <!-- category -->
-            <form method="post"><button type="submit" name="genre" value="Comedy" class="btn text-white shadow-none pl-0">Comédie</button></form>
-            <form method="post"><button type="submit" name="genre" value="Horreur" class="btn text-white shadow-none">Horreur</button></form>
-            <form method="post"><button type="submit" name="genre" value="Thriller" class="btn text-white shadow-none">Thriller</button></form>
-            <form method="post"><button type="submit" name="genre" value="Guerre" class="btn text-white shadow-none">Guerre</button></form>
-            <form method="post"><button type="submit" name="genre" value="SF" class="btn text-white shadow-none">SF</button></form>
         </div>
         <div class="d-flex">
             <button class="btn text-white shadow-none" data-toggle="modal" data-target="#Modal2">Settings</button>
@@ -191,28 +134,4 @@ else {
             </div>
         </div>
     </div>
-</div>
-
-<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="cartCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="cartLongTitle"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="display:flex;flex-wrap:wrap;">
-        <?php echo $card; ?>
-      </div>
-      <div class="modal-footer">
-        <form method="post">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" name="buy">Buy</button>
-          <button type="submit" class="btn btn-danger" name="empty">Empty cart</button>
-        </form>
-
-      </div>
-    </div>
-  </div>
 </div>
