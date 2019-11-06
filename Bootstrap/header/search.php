@@ -89,9 +89,12 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                                                 <p>'.$info['vote_average'].'/10</p>
                                             </div>
                                             <div class="d-flex justify-content-center">
+                                            <form action="#" method="post">
                                               <button type="submit" name="add" class="btn btn-dark" value='.$info['id'].'>Add to cart</button>'
                                                 .commentaire($info['id']).//fonction pour afficher le bouton commentaires ou non.
-                                            '</div>
+                                            '
+                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
