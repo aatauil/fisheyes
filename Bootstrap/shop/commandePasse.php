@@ -28,7 +28,7 @@ session_start();
 <!-- liste avec toutes les anciennes commandes -->
 <div class="container-fluid">
     <div class="title">
-        <h1>Commande terminé</h1>
+        <h1>Historique de commande</h1>
     </div>
     <!-- on fais le lien avec la BDD -->
     <?php 

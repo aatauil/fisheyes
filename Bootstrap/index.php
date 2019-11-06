@@ -18,7 +18,6 @@ session_start();
 </head>
 <body>
 <!-- navbar HTML -->
-
 <?php include("header/navbar.php"); ?>
 
 <div class="container-fluid">

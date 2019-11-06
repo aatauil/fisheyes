@@ -10,7 +10,7 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/7b840f6fa2.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
 </head>
 <script>
     var total= 0;
@@ -55,7 +55,7 @@ session_start();
     
 
     </script>
-<?php include("header/navbar.php"); ?>
+<?php include("../header/navbar.php"); ?>
 <body>
 <div class="container">
 <div class="row">

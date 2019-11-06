@@ -5,7 +5,7 @@ if (!empty($_SESSION['user'])) {
     $affichage = "Log in";
 }
 if(isset($_POST['buy'])){
-  header("Location: ./shop.php");
+  header("Location: ./shop/shop.php");
 }
 if (isset($_POST['add'])) {
   if(empty($_SESSION['cart'])){
@@ -18,7 +18,7 @@ if (isset($_POST['empty'])) {
   $_SESSION['cart'] = array();
 }
 $card="";
-if (!$_SESSION['cart'] || !isset($_SESSION['cart'])) {
+if ( !isset($_SESSION['cart'])||!$_SESSION['cart']) {
   $card = "Your cart is empty";
 }
 else {
