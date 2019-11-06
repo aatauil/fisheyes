@@ -1,6 +1,11 @@
 <?php 
-session_start();
+session_start(); 
+$longeur=count($_SESSION['cart']);
+if($longeur>=5){
+    $_COOKIE['total']=$_COOKIE['total']-(($_COOKIE['total']/100)*5);
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,54 +17,142 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
+<script>
+    var total= 0;
+    var prix;
+    var list = <?php echo json_encode($_SESSION['cart']); ?>;
+    
+    function getDetails(id){
+    prix= 0;
+    var url = "https://api.themoviedb.org/3/movie/"+id+"?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US";
+    fetch(url)
+    .then(reponse =>reponse.json())
+    .then (data => {
+    var vote =data.vote_average;
+    if(vote<5){
+        prix=5;
+    }
+    else if(vote<7.5 && vote>5){
+        prix=7.5;
+    }
+    else if(vote <8.4 && vote>7.5){
+        prix=10;
+    }
+    else{
+        prix=12.5;
+    }
+    total= total+prix;
+    var ecris1=document.getElementById('total');
+    ecris1.innerHTML="<h1>Total</h1><p>subtotal:"+" "+total+"$"+"</p>";
+    var ecris=document.getElementById('shoppingCart');
+    ecris.innerHTML+="<div class='object'><img width='20%' src='http://image.tmdb.org/t/p/w185//"+data.poster_path+"'><p id='filmDesc'><b>"+data.title+"</b><br>"+prix+"$</p> </div>";
+    console.log(total)
+    
+
+    // create cookie to transfer js variable to php
+
+    $(document).ready(function () { 
+    createCookie("total", total, "10"); 
+}); 
+   
+// Function to create the cookie 
+function createCookie(name, value, days) { 
+    var expires; 
+      
+    if (days) { 
+        var date = new Date(); 
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); 
+        expires = "; expires=" + date.toGMTString(); 
+    } 
+    else { 
+        expires = ""; 
+    } 
+      
+    document.cookie = escape(name) + "=" +  
+        escape(value) + expires + "; path=/"; 
+} 
+    })
+    }
+    //affichage des elements du panier
+    for(var i =0;i<list.length;i++){
+        getDetails(list[i]);
+    }
+    </script>
 <?php include("header/navbar.php"); ?>
-<div class="cart content-wrapper">
-    <h1>Shopping Cart</h1>
-    <form action="" method="post">
-        <table>
-            <thead>
-                <tr>
-                    <td colspan="2">Product</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Total</td>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (empty($_SESSION['cart'])): ?>
-                <tr>
-                    <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
-                </tr>
-                <?php else: ?>
-                <?php foreach ($ as $): ?>
-                <tr>
-                    <td class="img">
-                        <a href="index.php?page=product&id=<?=$product['id']?>">
-                            <img src="imgs/<?=$product['img']?>" width="50" height="50" alt="<?=$product['name']?>">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['name']?></a>
-                        <br>
-                        <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
-                    </td>
-                    <td class="price">&euro;<?=$product['price']?></td>
-                    <td class="quantity">
-                        <input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
-                    </td>
-                    <td class="price">&euro;<?=$product['price'] * $products_in_cart[$product['id']]?></td>
-                </tr>
-                <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
-        <div class="subtotal">
-            <span class="text">Subtotal</span>
-            <span class="price">&euro;<?=$subtotal?></span>
-        </div>
-        <div class="buttons">
-            <input type="submit" value="Update" name="update">
-            <input type="submit" value="Place Order" name="placeorder">
-        </div>
-    </form>
+<body>
+<div class="container">
+<div class="row">
+<div class="col-md-1">
 </div>
+<div class="col-md-5 content" id='shoppingCart'>
+<h1>Shopping Cart</h1>
+<?php
+if (empty($_SESSION['cart'])){
+    echo "<span id='emptyCart'>Your shopping cart is empty<span>";
+} else {
+  
+}
+?>
+</div>
+<div class="col-md-5 content" id="tot" style="height:300px;">
+<div id="total">
+</div>
+<form method="GET">
+<label>Code promo : </label>
+<input type="text" name="promo">
+<label>Choose your country</label>
+<select name="country">
+<option value="Belgium" selected> Belgium(Free)</option>
+<option value="Europe"> Europe(2.50$)</option>
+<option value="Outside"> Outside Europe(5$)</option>
+</select> <br>
+<input id="checkout" name="submit" type="submit" value="Calculate Price">
+</form>
+<?php
+if(isset($_GET['submit'])&& isset($_GET['country'])){
+    if($_GET['promo']=="MIKEESTTROPCOOL"){
+        if($_GET['country']=="Belgium"){
+
+        
+        $total=$_COOKIE['total']-(($_COOKIE['total']/100)*15);
+        echo "<p id='finalPrice'>Total : ".strval($total)."$</p>";
+        echo "<button href=''>Pay now!</button>";
+
+        }
+        elseif($_GET['country']!="Belgium"){
+            $total=$_COOKIE['total']-(($_COOKIE['total']/100)*10);
+            echo "<p id='finalPrice'>Total : ".strval($total)."$</p>";
+            echo "<button href=''>Pay now!</button>";   
+        }
+    }
+    else{
+        if($_GET['country']=="Europe"){
+
+        $total=$_COOKIE['total']+2.50;
+        echo "<p id='finalPrice'>Total : ".$total."$</p>";
+        echo "<button href=''>Pay now!</button>";
+        }
+        elseif($_GET['country']=="Outside"){
+            $total=$_COOKIE['total']+5;
+            echo "<p id='finalPrice'>Total : ".$total."$</p>";
+            echo "<button href=''>Pay now!</button>";
+        }
+        elseif($_GET['country']=="Belgium"){
+            $total=$_COOKIE['total'];
+            echo "<p id='finalPrice'>Total : ".$total."$</p>";
+            echo "<button href=''>Pay now!</button>";
+        }
+    }
+}
+?>
+</div>
+<div class="col-md-1"
+</div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
