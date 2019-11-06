@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mar. 05 nov. 2019 à 10:31
+-- Généré le :  mer. 06 nov. 2019 à 11:50
 -- Version du serveur :  10.4.6-MariaDB
 -- Version de PHP :  7.3.9
 
@@ -32,7 +32,9 @@ CREATE TABLE `commandes` (
   `id` int(11) NOT NULL,
   `id_commande` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `id_movie` int(11) NOT NULL
+  `id_movie` int(11) NOT NULL,
+  `date_order` datetime NOT NULL,
+  `prix` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
