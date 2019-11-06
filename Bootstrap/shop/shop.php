@@ -1,6 +1,11 @@
 <?php 
 session_start(); 
+$longeur=count($_SESSION['cart']);
+if($longeur>=5){
+    $_COOKIE['total']=$_COOKIE['total']-(($_COOKIE['total']/100)*5);
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +29,6 @@ session_start();
     .then(reponse =>reponse.json())
     .then (data => {
     var vote =data.vote_average;
-    console.log(vote);
     if(vote<5){
         prix=5;
     }
@@ -39,21 +43,40 @@ session_start();
     }
     total= total+prix;
     var ecris1=document.getElementById('total');
-    ecris1.innerHTML="<h1>Total</h1><p>Total:"+" "+total+"$"+"</p>";
+    ecris1.innerHTML="<h1>Total</h1><p>subtotal:"+" "+total+"$"+"</p>";
     var ecris=document.getElementById('shoppingCart');
-    ecris.innerHTML+="<div class='object'><img width='30%' src='http://image.tmdb.org/t/p/w185//"+data.poster_path+"'><p id='filmDesc'><b>"+prix+"$</b><br>"+data.title+"</p> </div>";
-    console.log(total);
+    ecris.innerHTML+="<div class='object'><img width='20%' src='http://image.tmdb.org/t/p/w185//"+data.poster_path+"'><p id='filmDesc'><b>"+data.title+"</b><br>"+prix+"$</p> </div>";
+    console.log(total)
+    
 
+    // create cookie to transfer js variable to php
+
+    $(document).ready(function () { 
+    createCookie("total", total, "10"); 
+}); 
+   
+// Function to create the cookie 
+function createCookie(name, value, days) { 
+    var expires; 
+      
+    if (days) { 
+        var date = new Date(); 
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); 
+        expires = "; expires=" + date.toGMTString(); 
+    } 
+    else { 
+        expires = ""; 
+    } 
+      
+    document.cookie = escape(name) + "=" +  
+        escape(value) + expires + "; path=/"; 
+} 
     })
-
     }
     //affichage des elements du panier
     for(var i =0;i<list.length;i++){
         getDetails(list[i]);
     }
-
-    
-
     </script>
 <?php include("../header/navbar.php"); ?>
 <body>
@@ -71,8 +94,57 @@ if (empty($_SESSION['cart'])){
 }
 ?>
 </div>
-<div class="col-md-5 content" id="total">
-<h1>Total</h1>
+<div class="col-md-5 content" id="tot" style="height:300px;">
+<div id="total">
+</div>
+<form method="GET">
+<label>Code promo : </label>
+<input type="text" name="promo">
+<label>Choose your country</label>
+<select name="country">
+<option value="Belgium" selected> Belgium(Free)</option>
+<option value="Europe"> Europe(2.50$)</option>
+<option value="Outside"> Outside Europe(5$)</option>
+</select> <br>
+<input id="checkout" name="submit" type="submit" value="Calculate Price">
+</form>
+<?php
+if(isset($_GET['submit'])&& isset($_GET['country'])){
+    if($_GET['promo']=="MIKEESTTROPCOOL"){
+        if($_GET['country']=="Belgium"){
+
+        
+        $total=$_COOKIE['total']-(($_COOKIE['total']/100)*15);
+        echo "<p id='finalPrice'>Total : ".strval($total)."$</p>";
+        echo "<button href=''>Pay now!</button>";
+
+        }
+        elseif($_GET['country']!="Belgium"){
+            $total=$_COOKIE['total']-(($_COOKIE['total']/100)*10);
+            echo "<p id='finalPrice'>Total : ".strval($total)."$</p>";
+            echo "<button href=''>Pay now!</button>";   
+        }
+    }
+    else{
+        if($_GET['country']=="Europe"){
+
+        $total=$_COOKIE['total']+2.50;
+        echo "<p id='finalPrice'>Total : ".$total."$</p>";
+        echo "<button href=''>Pay now!</button>";
+        }
+        elseif($_GET['country']=="Outside"){
+            $total=$_COOKIE['total']+5;
+            echo "<p id='finalPrice'>Total : ".$total."$</p>";
+            echo "<button href=''>Pay now!</button>";
+        }
+        elseif($_GET['country']=="Belgium"){
+            $total=$_COOKIE['total'];
+            echo "<p id='finalPrice'>Total : ".$total."$</p>";
+            echo "<button href=''>Pay now!</button>";
+        }
+    }
+}
+?>
 </div>
 <div class="col-md-1"
 </div>

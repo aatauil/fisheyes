@@ -166,9 +166,34 @@ fieldset[disabled] .btn-film.active {
     border-radius:5%;
     margin:5px;
     border-style: solid;
-    display: flex;
+ 
+    
 }
 .object{
     border-style: solid ;
     margin:5px;
+    display:flex;
+    
+}
+#filmDesc{
+    align-content:space-around;
+    font-size: 20px;
+}
+#total{
+    text-align: center;
+}
+#total p{
+    font-size: 24px;
+}
+#checkout{
+    font-size: 20px;
+    background-color:#B32323;
+    color:white;
+}
+#tot{
+    text-align: center;
+}
+#finalPrice{
+text-align: center;
+font-size: 30px;
 }

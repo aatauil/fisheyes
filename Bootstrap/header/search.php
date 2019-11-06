@@ -52,19 +52,19 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                 $poster = 'poster_path';
                 $overview = 'overview';
                 $send = 'method="POST"';
-
+    
                 foreach($movieInfo as $info){
                     $PosterPath = $info[$poster];
-
+    
                     // insert message "image non disponible" when image not found
                     if ($info['poster_path'] == "") {
                         $image = "<p class='text-white'>Image non disponible</p>";
                     } else {
                         $image = '<img class="img-fluid" src="https://image.tmdb.org/t/p'.$imgSize.$PosterPath.'">';
                     }
-
+    
                 // PUT CARD ON SCREEN WITH EACH MOVIE
-                    echo
+                    echo 
                     '<div class="col-lg-2 col-md-6 mb-4">
                         <div class="card movie">
                             '.$image.'
@@ -102,15 +102,15 @@ if (!empty($_POST['searchInput']) && !isset($_POST['genre'])) {
                         </div>
                     </div>';
                 $i += 1;
-                }
+                } 
             }
-}
+} 
 
 
 else if (isset($_POST['genre']) && $_POST['genre'] == 'Horreur') {
     $genreNumber = "27";
     include "movie-Genres/movieSearch.php";
-}
+} 
 
 else if (isset($_POST['genre']) && $_POST['genre'] == 'Comedy') {
     $genreNumber = "35";

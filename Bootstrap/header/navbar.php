@@ -18,7 +18,11 @@ if (isset($_POST['empty'])) {
   $_SESSION['cart'] = array();
 }
 $card="";
+<<<<<<< HEAD
 if ( !isset($_SESSION['cart'])||!$_SESSION['cart']) {
+=======
+if (!isset($_SESSION['cart']) || !$_SESSION['cart']) {
+>>>>>>> 6f16e7d64b00dd217eb06a969ac2bc55fe690584
   $card = "Your cart is empty";
 }
 else {
@@ -31,7 +35,7 @@ else {
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 100,
+      CURLOPT_TIMEOUT => 30,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "GET",
       CURLOPT_POSTFIELDS => "{}",
@@ -45,7 +49,7 @@ else {
     if ($err) {
       echo "cURL Error #:" . $err;
     } else {
-      $card .= '<div class="card text-center" style="width: 18rem;">
+      $card .= '<div class="card text-center m-3" style="width:14rem;">
                   <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/w185//'.$response['poster_path'].'" alt="Card image cap">
                   <div class="card-body">
                     <p class="card-text">'.$response['title'].'</p>
@@ -63,7 +67,7 @@ else {
     </button>
     <div class="collapse navbar-collapse navbars justify-content-between" id="collapse_target1">
         <!-- logo -->
-        <a class="navbar-brand text-white" href="../index.php">FishEyes</a>
+        <a class="navbar-brand text-white" href="./index.php">FishEyes</a>
         <div class="d-flex">
             <!-- searchBar -->
             <form method="post" id="searchBar" class="searchBar">
@@ -202,7 +206,7 @@ else {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" style="display:flex;">
+      <div class="modal-body" style="display:flex;flex-wrap:wrap;">
         <?php echo $card; ?>
       </div>
       <div class="modal-footer">

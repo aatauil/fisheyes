@@ -38,7 +38,7 @@ session_start();
     }catch (Exception $e) {
       
         //En cas d'erreur on affiche un message et on arrete tout
-        die('Erreur : ' . $e->getMessage());
+        die('Error : ' . $e->getMessage());
       }
 
       //on récupère l'id de l'user
@@ -57,7 +57,8 @@ session_start();
     }
     else{
         while($ligne){
-            echo "<p>papapapapa</p>";
+            echo "";
+
         }
     }
 
