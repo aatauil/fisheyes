@@ -29,6 +29,7 @@ body {
 
 }
 
+
 .modal-dialog{
     margin: auto 0 !important;
     min-width: 100vw !important;
@@ -138,4 +139,18 @@ fieldset[disabled] .btn-film.active {
 .btn-film .badge { 
     color: #FF6F6F; 
     background-color: #ffffff; 
+}
+
+
+
+
+/*commande Passé*/
+.title{
+    text-align: center;
+}
+
+.comand{
+    padding-top: 20vh;
+    font-size: 50px;
+
 }
