@@ -1,6 +1,5 @@
 <?php 
-session_start();
-$_SESSION['cart']=array(475557,155,414); 
+session_start(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,9 +39,9 @@ $_SESSION['cart']=array(475557,155,414);
     }
     total= total+prix;
     var ecris1=document.getElementById('total');
-    ecris1.innerHTML="<h1>Total</h1><p>Total:"+total+"</p>";
+    ecris1.innerHTML="<h1>Total</h1><p>Total:"+" "+total+"$"+"</p>";
     var ecris=document.getElementById('shoppingCart');
-    ecris.innerHTML+="<div class='object'><img width='30%' src='http://image.tmdb.org/t/p/w185//"+data.poster_path+"'>"+data.title+"Price ="+prix+" $ <br></div>";
+    ecris.innerHTML+="<div class='object'><img width='30%' src='http://image.tmdb.org/t/p/w185//"+data.poster_path+"'><p id='filmDesc'><b>"+prix+"$</b><br>"+data.title+"</p> </div>";
     console.log(total);
 
     })

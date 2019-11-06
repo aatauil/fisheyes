@@ -151,7 +151,8 @@ fieldset[disabled] .btn-film.active {
     background-color: white;
     border-radius:5%;
     margin:5px;
-    border-style: solid;;
+    border-style: solid;
+    display: flex;
 }
 .object{
     border-style: solid ;
