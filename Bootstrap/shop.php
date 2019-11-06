@@ -14,10 +14,12 @@ $_SESSION['cart']=array(475557,155,414);
     <link href="style.css" rel="stylesheet">
 </head>
 <script>
+    var total= 0;
+    var prix;
     var list = <?php echo json_encode($_SESSION['cart']); ?>;
     
     function getDetails(id){
-    var prix=0;
+    prix= 0;
     var url = "https://api.themoviedb.org/3/movie/"+id+"?api_key=b53ba6ff46235039543d199b7fdebd90&language=en-US";
     fetch(url)
     .then(reponse =>reponse.json())
@@ -36,16 +38,22 @@ $_SESSION['cart']=array(475557,155,414);
     else{
         prix=12.5;
     }
+    total= total+prix;
+    var ecris1=document.getElementById('total');
+    ecris1.innerHTML="<h1>Total</h1><p>Total:"+total+"</p>";
     var ecris=document.getElementById('shoppingCart');
     ecris.innerHTML+="<div class='object'><img width='30%' src='http://image.tmdb.org/t/p/w185//"+data.poster_path+"'>"+data.title+"Price ="+prix+" $ <br></div>";
-    })
-    }
+    console.log(total);
 
+    })
+
+    }
     //affichage des elements du panier
     for(var i =0;i<list.length;i++){
         getDetails(list[i]);
     }
 
+    
 
     </script>
 <?php include("header/navbar.php"); ?>
@@ -64,11 +72,10 @@ if (empty($_SESSION['cart'])){
 }
 ?>
 </div>
-<div class="col-md-5 content">
+<div class="col-md-5 content" id="total">
 <h1>Total</h1>
 </div>
 <div class="col-md-1"
-</div>
 </div>
 </div>
 </div>
