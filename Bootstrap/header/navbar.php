@@ -19,7 +19,7 @@ if (isset($_POST['add'])) {
     </button>
     <div class="collapse navbar-collapse navbars justify-content-between" id="collapse_target1">
         <!-- logo -->
-        <a class="navbar-brand text-white" href="../index.php">FishEyes</a>
+        <a class="navbar-brand text-white" href="./index.php">FishEyes</a>
         <div class="d-flex">
             <!-- searchBar -->
             <form method="post" id="searchBar" class="searchBar">
