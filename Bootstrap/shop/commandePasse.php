@@ -56,9 +56,10 @@ session_start();
         vos achats</p></div>";
     }
     else{
-        while($ligne){
-            echo "";
-
+        $i=0;
+        while($ligne=$requete ->fetch()){
+            echo "<br> <br><div class='".$i."'>".$ligne['date_order']."</div> <div> ".$ligne['id_movie']."</div>";
+            $i++;
         }
     }
 
