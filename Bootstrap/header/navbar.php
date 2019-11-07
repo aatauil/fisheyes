@@ -19,8 +19,17 @@ if (isset($_POST['empty'])) {
 }
 if (isset($_POST['rmv'])) {
   if (($key = array_search($_POST['movie'], $_SESSION['cart'])) !== false) {
-     if ($_SESSION['cart'][$key] != count($_SESSION['cart'])) {
-       array_splice($_SESSION['cart'],$key,$key-1);
+     if ($key != 0 && $key != count($_SESSION['cart'])-1 ) {
+       for ($i=$key; $i < count($_SESSION['cart'])-1; $i++) {
+         $_SESSION['cart'][$i] = $_SESSION['cart'][$i+1];
+       }
+       array_splice($_SESSION['cart'],count($_SESSION['cart'])-1);
+     }
+     elseif ($key == count($_SESSION['cart'])-1) {
+       array_splice($_SESSION['cart'],$key);
+     }
+     else{
+       array_shift($_SESSION['cart']);
      }
    }
 }
