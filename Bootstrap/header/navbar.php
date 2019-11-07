@@ -17,6 +17,23 @@ if (isset($_POST['add'])) {
 if (isset($_POST['empty'])) {
   $_SESSION['cart'] = array();
 }
+if (isset($_POST['rmv'])) {
+  if (($key = array_search($_POST['movie'], $_SESSION['cart'])) !== false) {
+     if ($key != 0 && $key != count($_SESSION['cart'])-1 ) {
+       for ($i=$key; $i < count($_SESSION['cart'])-1; $i++) {
+         $_SESSION['cart'][$i] = $_SESSION['cart'][$i+1];
+       }
+       array_splice($_SESSION['cart'],count($_SESSION['cart'])-1);
+     }
+     elseif ($key == count($_SESSION['cart'])-1) {
+       array_splice($_SESSION['cart'],$key);
+     }
+     else{
+       array_shift($_SESSION['cart']);
+     }
+   }
+}
+
 $card="";
 if (!isset($_SESSION['cart']) || !$_SESSION['cart']) {
   $card = "Your cart is empty";
@@ -50,6 +67,10 @@ else {
                   <div class="card-body">
                     <p class="card-text">'.$response['title'].'</p>
                   </div>
+                  <form method="post" action="">
+                    <input style="display:none;vidsibility:hidden;" name="movie" value="'.$response['id'].'">
+                    <button class="btn btn-danger" type="submit" name="rmv">Remove</button>
+                  </form>
                 </div>';
     }
   }
