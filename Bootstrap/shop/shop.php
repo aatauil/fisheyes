@@ -25,7 +25,9 @@ if(isset($_POST['pay'])){
       $_SESSION['cart'][$i],
       $_COOKIE['total']
     ));
-  }
+  
+}$_SESSION['cart']=array();
+
 }
 ?>
 
@@ -102,7 +104,7 @@ function createCookie(name, value, days) {
     }
     </script>
 
-<?php include("../header/navbar.php");  ?>
+<?php include("../header/navbarshop.php");  ?>
 <body>
   <div class="container">
     <div class="row">
