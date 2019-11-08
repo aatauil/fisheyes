@@ -28,7 +28,8 @@ session_start();
 <!-- liste avec toutes les anciennes commandes -->
 <div class="container-fluid">
     <div class="title">
-        <h1>Historique de commande</h1>
+        <h1>Passed order</h1>
+        <br>
     </div>
     <!-- on fais le lien avec la BDD -->
     <?php 
@@ -50,14 +51,17 @@ session_start();
     $ligne= $requete->fetch();
     if(!$ligne)
     {
-        echo "<div class='title comand'><p>Vous n'avez encore rien commandé sur notre site! <br>
-        rendez vous sur notre catalogue en <a href='http://localhost/fisheyes/Bootstrap'>cliquant ici</a>
-        <br>pour commencer 
-        vos achats</p></div>";
+        echo "<div class='title comand'><p>
+        You have not ordered anything yet on our site!
+        <br>
+        Go to our catalog by <a href='http://localhost/fisheyes/Bootstrap'>clicking here</a>
+        <br>        to start your shopping
+        </p></div>";
     }
     else{
+
         while($ligne=$requete ->fetch()){
-            echo "<br> <br><div class='dateFilm'>".$ligne['date_order'];
+            echo "<article class='dateFilm' >".$ligne['date_order'];
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -83,7 +87,7 @@ session_start();
 
               echo "<div class='ficheFilms'><div class='titreFilms'>".$response['title'].
               "</div> <br> <div class ='imgFilm'><img class='img-fluid' src='https://image.tmdb.org/t/p/w300//".$response['poster_path'].
-              "'></div><br> <p class='numCmd'>numéro de commande: ".$ligne['id_commande']."</p> </div>";
+              "'></div><br> <p class='numCmd'>numéro de commande: ".$ligne['id_commande']."</p> </div>  </article> <br> ";
             }
         
         }

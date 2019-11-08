@@ -31,6 +31,9 @@ if (isset($_POST['add'])) {
         <div class="d-flex">
         </div>
         <div class="d-flex">
+            <!--buttons historique de commandes. -->
+        <form action="commandePasse.php" method="post"><button class="btn text-white shadow-none" type="submit">Passed order</button></form>
+            <!--settings button. -->
             <button class="btn text-white shadow-none" data-toggle="modal" data-target="#Modal2">Settings</button>
             <!-- logout button -->
             <form action="logSys/login.php" method="post"><button class="btn text-white shadow-none" type="submit" name="logout">Logout</button></form>

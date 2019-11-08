@@ -119,6 +119,9 @@ else {
             <form method="post"><button type="submit" name="genre" value="SF" class="btn text-white shadow-none">SF</button></form>
         </div>
         <div class="d-flex">
+                      <!--buttons historique de commandes. -->
+        <form action="shop/commandePasse.php" method="post"><button class="btn text-white shadow-none" type="submit">Passed order</button></form>
+            <!-- button settings -->
             <button class="btn text-white shadow-none" data-toggle="modal" data-target="#Modal2">Settings</button>
             <!-- logout button -->
             <form action="logSys/login.php" method="post"><button class="btn text-white shadow-none" type="submit" name="logout">Logout</button></form>
