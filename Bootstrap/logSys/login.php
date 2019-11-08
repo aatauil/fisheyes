@@ -3,7 +3,7 @@ session_start();
 if (isset($_POST['login']) || isset($_POST['logout'])) {
     if ((isset($_POST['login']))) {
         try {
-        $bdd = new PDO('mysql:host=localhost;dbname=id11453176_fisheyes;charset=utf8', 'id11453176_daniel43886', 'c=5CPBky');
+        $bdd = new PDO('mysql:host=localhost;dbname=fisheyes;charset=utf8', 'root', '');
         } 
         catch (Exception $e) {
         die('Erreur : ' .$e->getMessage());
@@ -15,12 +15,13 @@ if (isset($_POST['login']) || isset($_POST['logout'])) {
         $req->execute(array('email' => $usermail,'username' => $usermail));
         $nombre = $req->fetch();
         if ($nombre[0] != 0) {
-            $req = $bdd->prepare('SELECT password, username FROM users WHERE username = :username OR email = :email');
+            $req = $bdd->prepare('SELECT password, username,id FROM users WHERE username = :username OR email = :email');
             $req->execute(array('email' => $usermail,'username' => $usermail));
             $infos = $req->fetch();
             if (password_verify($password, $infos[0])) {
                 $req->closeCursor(); 
                 $_SESSION['user'] = $infos[1];
+                $_SESSION['id'] =$infos[2];
                 header('location: ../index.php?success');
 
             } else {

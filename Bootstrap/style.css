@@ -29,6 +29,7 @@ body {
 
 }
 
+
 .modal-dialog{
     margin: auto 0 !important;
     min-width: 100vw !important;
@@ -138,4 +139,86 @@ fieldset[disabled] .btn-film.active {
 .btn-film .badge { 
     color: #FF6F6F; 
     background-color: #ffffff; 
+}
+
+
+
+
+/*commande Passé*/
+.title{
+    text-align: center;
+    color: white;
+}
+
+.comand{
+    padding-top: 20vh;
+    font-size: 50px;
+
+}
+
+.ficheFilms{
+text-align: center;
+color: white !important;
+}
+
+
+.titreFilms{
+    font-size: 20px;
+
+
+}
+
+.numCmd{
+    font-size: 20px;
+
+}
+
+.dateFilm{
+    font-size: 20px;
+    text-align: center;
+    color: white;
+
+}
+/*E-shop Page*/
+
+#emptyCart{
+    color: black !important;
+    text-align: center;
+    font-size: 30px;
+}
+.content{
+    background-color: white;
+    border-radius:5%;
+    margin:5px;
+    border-style: solid;
+ 
+    
+}
+.object{
+    border-style: solid ;
+    margin:5px;
+    display:flex;
+    
+}
+#filmDesc{
+    align-content:space-around;
+    font-size: 20px;
+}
+#total{
+    text-align: center;
+}
+#total p{
+    font-size: 24px;
+}
+#checkout{
+    font-size: 20px;
+    background-color:#B32323;
+    color:white;
+}
+#tot{
+    text-align: center;
+}
+#finalPrice{
+text-align: center;
+font-size: 30px;
 }
