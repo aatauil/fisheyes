@@ -1,5 +1,11 @@
 <?php
 session_start();
+if($_SESSION['user']==""){
+    header('location: ../index.php');
+    
+}else{
+
+
 $longeur=count($_SESSION['cart']);
 if($longeur>=5){
     $_COOKIE['total']=$_COOKIE['total']-(($_COOKIE['total']/100)*5);
@@ -28,6 +34,7 @@ if(isset($_POST['pay'])){
   
 }$_SESSION['cart']=array();
 
+}
 }
 ?>
 
