@@ -56,10 +56,36 @@ session_start();
         vos achats</p></div>";
     }
     else{
-        $i=0;
         while($ligne=$requete ->fetch()){
-            echo "<br> <br><div class='".$i."'>".$ligne['date_order']."</div> <div> ".$ligne['id_movie']."</div>";
-            $i++;
+            echo "<br> <br><div class='dateFilm'>".$ligne['date_order'];
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://api.themoviedb.org/3/movie/".$ligne['id_movie']."?language=en-US&api_key=b53ba6ff46235039543d199b7fdebd90",
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "GET",
+              CURLOPT_POSTFIELDS => "{}",
+            ));
+            
+            $response = json_decode(curl_exec($curl),true);
+            $err = curl_error($curl);
+            
+            curl_close($curl);
+            
+            if ($err) {
+              echo "cURL Error #:" . $err;
+            } else {
+                $poster = 'poster_path';
+
+              echo "<div class='ficheFilms'><div class='titreFilms'>".$response['title'].
+              "</div> <br> <div class ='imgFilm'><img class='img-fluid' src='https://image.tmdb.org/t/p/w300//".$response['poster_path'].
+              "'></div><br> <p class='numCmd'>numéro de commande: ".$ligne['id_commande']."</p> </div>";
+            }
+        
         }
     }
 
