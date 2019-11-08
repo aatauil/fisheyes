@@ -4,9 +4,11 @@ if (!empty($_SESSION['user'])) {
 } else {
     $affichage = "Log in";
 }
+//if btn buy is set, send user to shop page
 if(isset($_POST['buy'])){
   header("Location: ./shop/shop.php");
 }
+//if btn add is set, add element($_POST['add']) to cart
 if (isset($_POST['add'])) {
   if(empty($_SESSION['cart'])){
     $_SESSION['cart']=array($_POST['add']);
@@ -14,20 +16,28 @@ if (isset($_POST['add'])) {
     array_push($_SESSION['cart'],$_POST['add']);
   }
 }
+//if btn empty cart is set, empty cart
 if (isset($_POST['empty'])) {
   $_SESSION['cart'] = array();
 }
+//if remove btn is set
 if (isset($_POST['rmv'])) {
+  //search element($_POST['movie']) in array($_SESSION['cart']) if there is a key, true
   if (($key = array_search($_POST['movie'], $_SESSION['cart'])) !== false) {
+    //if key is not first or last
      if ($key != 0 && $key != count($_SESSION['cart'])-1 ) {
+       //replace the removed element by the follwing element in the array
        for ($i=$key; $i < count($_SESSION['cart'])-1; $i++) {
          $_SESSION['cart'][$i] = $_SESSION['cart'][$i+1];
        }
+       //reduce the size of the array by removing the last element
        array_splice($_SESSION['cart'],count($_SESSION['cart'])-1);
      }
+     //key is last
      elseif ($key == count($_SESSION['cart'])-1) {
        array_splice($_SESSION['cart'],$key);
      }
+     //key is first
      else{
        array_shift($_SESSION['cart']);
      }
