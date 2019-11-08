@@ -156,7 +156,7 @@ fieldset[disabled] .btn-film.active {
 }
 .ficheFilms{
 text-align: center;
-color: white;
+color: white !important;
 }
 
 
@@ -220,4 +220,6 @@ color: white;
 text-align: center;
 font-size: 30px;
 }
-
+#off{
+    
+}

@@ -2,8 +2,13 @@
 session_start();
 if($_SESSION['user']==""){
     header('location: ../index.php');
-    
+    exit;
 }else{
+if(!$_SESSION['cart']){
+    header('location: ../index.php');
+    exit;
+}
+else{
 
 
 $longeur=count($_SESSION['cart']);
@@ -34,6 +39,7 @@ if(isset($_POST['pay'])){
   
 }$_SESSION['cart']=array();
 
+}
 }
 }
 ?>
@@ -127,7 +133,7 @@ function createCookie(name, value, days) {
       }
       ?>
       </div>
-    <div class="col-md-5 content" id="tot" style="height:300px;">
+    <div class="col-md-5 content" id="tot" style="height:370px;">
     <div id="total">
     </div>
     <form method="GET">
@@ -145,17 +151,21 @@ function createCookie(name, value, days) {
     if(isset($_GET['submit'])&& isset($_GET['country'])){
         if($_GET['promo']=="MIKEESTTROPCOOL"){
             if($_GET['country']=="Belgium"){
-
-
             $total=$_COOKIE['total']-(($_COOKIE['total']/100)*15);
             echo "<p id='finalPrice'>Total : ".strval($total)."$</p>";
-            echo "<form action ='' method='post'><button href='commandePassee.php' name='pay' type='submit'>Pay now!</button></form>";
+            echo "<form action ='' method='post'><button name='pay' type='submit'>Pay now!</button><br><span>15% off with this coupon</span>";
+            if($longeur>=5){
+                echo "<br><span id ='off'>5% off for 5 movies</span></form>";
+            }
 
             }
             elseif($_GET['country']!="Belgium"){
                 $total=$_COOKIE['total']-(($_COOKIE['total']/100)*10);
                 echo "<p id='finalPrice'>Total : ".strval($total)."$</p>";
-                echo "<form action ='' method='post'><button name='pay' type='submit'>Pay now!</button></form>";
+                echo "<form action ='' method='post'><button name='pay' type='submit'>Pay now!</button><br><span>10% off with this coupon</span>";
+                if($longeur>=5){
+                    echo "<br><span id ='off'>5% off for 5 movies</span></form>";
+                }
             }
         }
         else{
