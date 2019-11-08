@@ -149,7 +149,7 @@ function createCookie(name, value, days) {
 
             $total=$_COOKIE['total']-(($_COOKIE['total']/100)*15);
             echo "<p id='finalPrice'>Total : ".strval($total)."$</p>";
-            echo "<form action ='' method='post'><button name='pay' type='submit'>Pay now!</button></form>";
+            echo "<form action ='' method='post'><button href='commandePassee.php' name='pay' type='submit'>Pay now!</button></form>";
 
             }
             elseif($_GET['country']!="Belgium"){

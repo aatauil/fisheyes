@@ -154,6 +154,29 @@ fieldset[disabled] .btn-film.active {
     font-size: 50px;
 
 }
+.ficheFilms{
+text-align: center;
+color: white;
+}
+
+
+.titreFilms{
+    font-size: 20px;
+
+
+}
+
+.numCmd{
+    font-size: 20px;
+
+}
+
+.dateFilm{
+    font-size: 20px;
+    text-align: center;
+    color: white;
+
+}
 /*E-shop Page*/
 
 #emptyCart{
@@ -197,3 +220,4 @@ fieldset[disabled] .btn-film.active {
 text-align: center;
 font-size: 30px;
 }
+
